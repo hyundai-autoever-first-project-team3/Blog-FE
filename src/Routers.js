@@ -10,7 +10,7 @@ const Routers = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* 메인페이지 - 전체 글 목록 / TIL 목록 */}
+        {/* 메인페이지 - 전체 글 목록 / 날짜별 챌린지 목록 */}
         <Route element={<MainPage />} path="/" exact />
         {/* 글 상세 페이지 */}
         <Route element={<PostDetailPage />} path="/posts/:postId" />
