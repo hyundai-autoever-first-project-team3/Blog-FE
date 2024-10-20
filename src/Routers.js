@@ -15,7 +15,7 @@ const Routers = () => {
         {/* 글 상세 페이지 */}
         <Route element={<PostDetailPage />} path="/posts/:postId" />
         {/* 글 작성 페이지 */}
-        <Route element={<PostWritePage />} path="/posts/write" />
+        <Route element={<PostWritePage />} path="/posts/write"/>
         {/* 챌리지 상세 페이지 - 일일 코딩테스트 문제 리스트 */}
         <Route element={<ChallengePage />} path="/challenges/:challengeId" />
         {/* 마이페이지 */}
