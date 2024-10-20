@@ -1,27 +1,28 @@
-import React, { useEffect } from 'react';
-import Editor from '@toast-ui/editor';
+import React from 'react';
 import '@toast-ui/editor/dist/toastui-editor.css';
-import '../styles/Editor.css';
+import { Editor } from '@toast-ui/react-editor';
 
-const ToastEditor = () => {
-  useEffect(() => {
-    const editor = new Editor({
-      el: document.querySelector('#editor'),
-      height: '500px',
-      initialEditType: 'markdown',
-      previewStyle: 'vertical',
-      usageStatistics: false,
-      hideModeSwitch: true,
-      initialValue: ' ',
-      placeholder: 'Please enter the contents',
-    });
-  }, []);
+class MyComponent extends React.Component {
+  editorRef = React.createRef();
 
-  return (
-    <div>
-      <div id="editor"></div>
-    </div>
-  );
-};
+  handleClick = () => {
+    this.editorRef.current.getInstance().exec('bold');
+  };
 
-export default ToastEditor;
+  render() {
+    return (
+      <>
+        <Editor
+          previewStyle="vertical"
+          height="400px"
+          initialEditType="markdown"
+          initialValue=""
+          ref={this.editorRef}
+        />
+        <button onClick={this.handleClick}>make bold</button>
+      </>
+    );
+  }
+}
+
+export default MyComponent;

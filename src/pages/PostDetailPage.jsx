@@ -1,4 +1,5 @@
 import React from 'react'
+
 const PostDetailPage = () => {
   return (
     <div>
@@ -6,6 +7,5 @@ const PostDetailPage = () => {
     </div>
   )
 }
-
 
 export default PostDetailPage
