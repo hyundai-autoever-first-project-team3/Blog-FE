@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const PostDetailPage = () => {
   return (
@@ -52,7 +53,8 @@ const PostDetailPage = () => {
             color="success"
             style={{ borderRadius: "1rem" }}
           >
-            좋아요
+            <FavoriteIcon />
+            카운트
           </Button>
         </div>
       </div>
