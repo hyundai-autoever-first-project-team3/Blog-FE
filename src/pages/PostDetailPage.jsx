@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "@mui/material/Button";
-import SearchIcon from "@mui/icons-material/Search";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+// import SearchIcon from "@mui/icons-material/Search";
+// import FavoriteIcon from "@mui/icons-material/Favorite";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PostDetailPage = () => {
   return (
@@ -18,7 +19,8 @@ const PostDetailPage = () => {
       >
         <h2>LOGO</h2>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <SearchIcon style={{ marginRight: "0.5rem" }} />
+          <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
+          {/* <SearchIcon style={{ marginRight: "0.5rem" }} /> */}
           <Button
             variant="contained"
             color="success"
@@ -53,7 +55,7 @@ const PostDetailPage = () => {
             color="success"
             style={{ borderRadius: "1rem" }}
           >
-            <FavoriteIcon />
+            {/* <FavoriteIcon /> */}
             카운트
           </Button>
         </div>
