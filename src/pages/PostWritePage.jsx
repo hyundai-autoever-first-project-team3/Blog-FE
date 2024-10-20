@@ -1,9 +1,9 @@
 import React from 'react'
-import ToastEditor from '../components/Editor';
+import ToastEditor from '../components/ToastEditor';
 const PostWritePage = () => {
   return (
       <div>
-        <h1>TOAST UI Editor Example</h1>
+        <h1>sample</h1>
         <ToastEditor />
       </div>
     );
