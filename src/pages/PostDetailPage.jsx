@@ -4,6 +4,8 @@ import Header from "../components/common/Header";
 import InfoBar from "../components/postdetail/InfoBar";
 import PageContainer from "../components/common/PageContainer";
 
+import Pagination from "@mui/material/Pagination";
+
 import Button from "@mui/material/Button";
 import Footer from "../components/postdetail/Footer";
 
@@ -54,6 +56,12 @@ const PostDetailPage = () => {
           />
         </div>
         <Footer />
+        <div></div>
+        <Pagination
+          className="my-28 justify-center"
+          count={10}
+          color="success"
+        />
       </PageContainer>
     </div>
   );
