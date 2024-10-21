@@ -13,8 +13,8 @@ function Footer() {
             alt=""
           />
           <div className="flex flex-col align items-center">
-            <div className="font-bold">고채린</div>
-            <div>나는 개발자다</div>
+            <div className="text-2xl font-bold">고채린</div>
+            <div className="text-lg">나는 개발자다</div>
           </div>
         </div>
 

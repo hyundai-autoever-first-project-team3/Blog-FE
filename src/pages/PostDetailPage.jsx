@@ -40,7 +40,7 @@ const PostDetailPage = () => {
           </Button>
         </div>
         <div>
-          <span>
+          <span className="text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo at aut
             dolor quidem quam iste impedit ipsa nihil consequuntur deserunt
             eaque, quae ex minima saepe? Explicabo natus quibusdam debitis
