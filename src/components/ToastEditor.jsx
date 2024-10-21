@@ -18,6 +18,8 @@ class MyComponent extends React.Component {
           ref={this.editorRef}
         />
         <button>나가기</button>
+        <button>임시저장</button>
+        <button>출간하기</button>
       </>
     );
   }
