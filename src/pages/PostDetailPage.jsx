@@ -12,9 +12,13 @@ const PostDetailPage = () => {
     <div>
       <Header />
       <PageContainer>
-        <h1 style={{ marginBottom: "2rem" }}>
+        <h1
+          className="text-5xl font-extrabold"
+          style={{ marginBottom: "2rem" }}
+        >
           글제목 Lorem ipsum dolor sit amet.
         </h1>
+
         <InfoBar />
 
         <div className="tagwrap">

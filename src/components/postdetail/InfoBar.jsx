@@ -14,8 +14,10 @@ function InfoBar() {
         }}
       >
         <div>
-          <span style={{ marginRight: "1rem" }}>작성자</span>
-          <span>작성날짜</span>
+          <span className="font-bold" style={{ marginRight: "1rem" }}>
+            고채린
+          </span>
+          <span>2024년 10월 21일</span>
         </div>
         <Button
           variant="outlined"
