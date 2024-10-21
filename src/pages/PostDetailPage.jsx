@@ -4,6 +4,8 @@ import Header from "../components/common/Header";
 import InfoBar from "../components/postdetail/InfoBar";
 import PageContainer from "../components/common/PageContainer";
 
+import Pagination from "@mui/material/Pagination";
+
 import Button from "@mui/material/Button";
 import Footer from "../components/postdetail/Footer";
 
@@ -38,7 +40,7 @@ const PostDetailPage = () => {
           </Button>
         </div>
         <div>
-          <span>
+          <span className="text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo at aut
             dolor quidem quam iste impedit ipsa nihil consequuntur deserunt
             eaque, quae ex minima saepe? Explicabo natus quibusdam debitis
@@ -54,6 +56,12 @@ const PostDetailPage = () => {
           />
         </div>
         <Footer />
+        <div></div>
+        <Pagination
+          className="my-28 justify-center"
+          count={10}
+          color="success"
+        />
       </PageContainer>
     </div>
   );
