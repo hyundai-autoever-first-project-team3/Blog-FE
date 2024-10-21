@@ -5,21 +5,19 @@ import { Editor } from '@toast-ui/react-editor';
 class MyComponent extends React.Component {
   editorRef = React.createRef();
 
-  handleClick = () => {
-    this.editorRef.current.getInstance().exec('bold');
-  };
-
   render() {
     return (
       <>
         <Editor
           previewStyle="vertical"
-          height="400px"
+          height="80vh"
           initialEditType="markdown"
-          initialValue=""
+          initialValue=" "
+          placeholder="내용을 입력하세요"
+          hideModeSwitch = {true}
           ref={this.editorRef}
         />
-        <button onClick={this.handleClick}>make bold</button>
+        <button>나가기</button>
       </>
     );
   }
