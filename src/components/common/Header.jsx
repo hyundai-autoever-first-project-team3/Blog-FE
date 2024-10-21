@@ -8,6 +8,7 @@ const Header = () => {
   return (
     <div className="flex flex-row justify-between items-center py-3 px-2">
       <div>로고로고</div>
+      <div className="h1"></div>
       <div className="flex flex-row gap-3">
         <IconButton aria-label="alarm">
           <FontAwesomeIcon icon={faBell} />

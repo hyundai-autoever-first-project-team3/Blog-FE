@@ -1,65 +1,56 @@
 import React from "react";
+
+import Header from "../components/common/Header";
+import InfoBar from "../components/postdetail/InfoBar";
+import PageContainer from "../components/common/PageContainer";
+
 import Button from "@mui/material/Button";
-// import SearchIcon from "@mui/icons-material/Search";
-// import FavoriteIcon from "@mui/icons-material/Favorite";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Footer from "../components/postdetail/Footer";
 
 const PostDetailPage = () => {
   return (
     <div>
-      <div
-        className="header"
-        style={{
-          display: "flex",
-          margin: "0 auto",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: `calc(100% - 2rem)`,
-        }}
-      >
-        <h2>LOGO</h2>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-          {/* <SearchIcon style={{ marginRight: "0.5rem" }} /> */}
-          <Button
-            variant="contained"
-            color="success"
-            style={{ borderRadius: "1rem" }}
-          >
-            로그인
-          </Button>
-        </div>
-      </div>
-
-      <div
-        className="head-wrapper"
-        style={{ width: "768px", marginLeft: "auto", marginRight: "auto" }}
-      >
+      <Header />
+      <PageContainer>
         <h1 style={{ marginBottom: "2rem" }}>
           글제목 Lorem ipsum dolor sit amet.
         </h1>
-        <div
-          className="info"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <div>
-            <span style={{ marginRight: "1rem" }}>작성자</span>
-            <span>작성날짜</span>
-          </div>
+        <InfoBar />
+
+        <div className="tagwrap">
+          <Button
+            variant="outlined"
+            color="success"
+            style={{ borderRadius: "1rem", margin: "1rem" }}
+          >
+            #DFS
+          </Button>
           <Button
             variant="outlined"
             color="success"
             style={{ borderRadius: "1rem" }}
           >
-            {/* <FavoriteIcon /> */}
-            카운트
+            #BFS
           </Button>
         </div>
-      </div>
+        <div>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo at aut
+            dolor quidem quam iste impedit ipsa nihil consequuntur deserunt
+            eaque, quae ex minima saepe? Explicabo natus quibusdam debitis
+            consequatur. Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Illo at aut dolor quidem quam iste impedit ipsa nihil
+            consequuntur deserunt eaque, quae ex minima saepe? Explicabo natus
+            quibusdam debitis consequatur.
+          </span>
+
+          <img
+            src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
+            alt=""
+          />
+        </div>
+        <Footer />
+      </PageContainer>
     </div>
   );
 };
