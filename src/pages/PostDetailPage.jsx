@@ -4,6 +4,8 @@ import Header from "../components/common/Header";
 import InfoBar from "../components/postdetail/InfoBar";
 import PageContainer from "../components/common/PageContainer";
 
+import Pagination from "@mui/material/Pagination";
+
 import Button from "@mui/material/Button";
 import Footer from "../components/postdetail/Footer";
 
@@ -12,9 +14,13 @@ const PostDetailPage = () => {
     <div>
       <Header />
       <PageContainer>
-        <h1 style={{ marginBottom: "2rem" }}>
+        <h1
+          className="text-5xl font-extrabold"
+          style={{ marginBottom: "2rem" }}
+        >
           글제목 Lorem ipsum dolor sit amet.
         </h1>
+
         <InfoBar />
 
         <div className="tagwrap">
@@ -34,7 +40,7 @@ const PostDetailPage = () => {
           </Button>
         </div>
         <div>
-          <span>
+          <span className="text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo at aut
             dolor quidem quam iste impedit ipsa nihil consequuntur deserunt
             eaque, quae ex minima saepe? Explicabo natus quibusdam debitis
@@ -50,6 +56,12 @@ const PostDetailPage = () => {
           />
         </div>
         <Footer />
+        <div className="flex flex-row content-center "></div>
+        <Pagination
+          className="my-28 justify-center"
+          count={10}
+          color="success"
+        />
       </PageContainer>
     </div>
   );
