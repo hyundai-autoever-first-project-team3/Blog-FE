@@ -56,7 +56,7 @@ const PostDetailPage = () => {
           />
         </div>
         <Footer />
-        <div></div>
+        <div className="flex flex-row content-center "></div>
         <Pagination
           className="my-28 justify-center"
           count={10}

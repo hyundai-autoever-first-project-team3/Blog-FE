@@ -12,6 +12,8 @@ const ChallengePage = () => {
           오늘의 챌린지 문제
         </div>
         <ChallengeCard />
+        <ChallengeCard />
+        <ChallengeCard />
       </PageContainer>
     </div>
   );
