@@ -20,14 +20,15 @@ const MyComponent = (props) => {
   const handleEditorChange = () => {
     const editorInstance = editorRef.current.getInstance();
     const markdown = editorInstance.getMarkdown();
-    setContent(markdown); 
-    previewRef.current.getInstance().setMarkdown(`# ${title}\n\n${markdown}`); 
+    setContent(markdown); // 본문 상태 업데이트
+    previewRef.current.getInstance().setMarkdown(`# ${title}\n\n${markdown}`); // 제목과 본문을 함께 업데이트
   };
 
   const handleTitleChange = (event) => {
     const title = event.target.value;
-    setTitle(title);
-    previewRef.current.getInstance().setMarkdown(`# ${title}\n\n${content}`); 
+    setTitle(title); // 제목 상태 업데이트
+    previewRef.current.getInstance().setMarkdown(`# ${title}\n\n${content}`); // 제목과 본문을 함께 업데이트
+  };
 
   const handleGoBack = () => {
     navigate(-1);
@@ -41,7 +42,7 @@ const MyComponent = (props) => {
           placeholder="제목을 입력하세요"
           className="pl-2 m-4 text-2xl font-bold text-gray-900 outline-none"
           value={title}
-          onChange={handleTitleChange}
+          onChange={handleTitleChange} // 제목 변경 핸들러 추가
         />
         <div className="flex px-3 m-3 space-x-2">
           <div className="relative w-full">
@@ -119,7 +120,7 @@ const MyComponent = (props) => {
               ["code", "codeblock"],
             ]}
             ref={editorRef}
-            onChange={handleEditorChange}
+            onChange={handleEditorChange} // 본문 변경 핸들러 추가
           />
         </div>
         <div className="flex items-center justify-between py-1.5 editor-footer">
@@ -140,10 +141,10 @@ const MyComponent = (props) => {
         </div>
       </div>
       <div className="w-1/2 p-5 bg-blue-50 preview-container">
-        <Viewer ref={previewRef} initialValue={``} />
+        <Viewer ref={previewRef} initialValue={``} /> {/* 제목과 본문을 함께 렌더링 */}
       </div>
     </div>
   );
 };
-}
+
 export default MyComponent;
