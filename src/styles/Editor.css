@@ -1,0 +1,56 @@
+.toastui-editor-defaultUI-toolbar{
+  background-color: transparent; 
+  border: none;
+}
+.preview-container{
+  overflow-y: auto; 
+  height: calc(100vh - 5px);
+} */
+.editor-container {
+  flex-direction: column;
+}
+.container {
+  display: flex;
+}
+.editor-wrapper {
+  flex: 1;
+  overflow-y: auto; 
+}
+
+.toastui-editor-tabs {
+  display: none;
+}
+.toastui-editor-defaultUI {
+  border: none;
+}
+
+.editor-footer {
+  position: fixed;
+  bottom: 0;
+  width: 48%; 
+  display: flex;
+  justify-content: flex; 
+  border-top: 1px solid rgb(230, 230, 235);
+}
+
+/* 스크롤바 전체 */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* 스크롤바 트랙 */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* 스크롤바 핸들 */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* 스크롤바 핸들 호버 시 */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
