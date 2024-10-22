@@ -33,7 +33,7 @@ const ProblemCard = () => {
             도전하기
           </Button>
         </div>
-        <div className="flex flex-row justify-end px-2">
+        <div className="absolute top-0 right-5">
           <FontAwesomeIcon
             icon={faMedal}
             style={{ color: "#FFD43B" }}
