@@ -6,14 +6,13 @@ import {
   faBell,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [modal, setModal] = React.useState(false);
 
   const handleKakaoLogin = () => {
     window.location.href =
-      "https://192.168.202.135:8080/oauth2/authorization/kakao";
+      "http://codingcare.site/api/oauth2/authorization/kakao";
   };
   const handleOpenModal = () => {
     setModal(true);
