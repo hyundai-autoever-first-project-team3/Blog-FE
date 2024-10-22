@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function SettingPage() {
-  return (
-    <div>SettingPage</div>
-  )
+  return <div>SettingPage123</div>;
 }
 
-export default SettingPage
+export default SettingPage;
