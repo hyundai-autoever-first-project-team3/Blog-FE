@@ -33,24 +33,23 @@
   border-top: 1px solid rgb(230, 230, 235);
 }
 
-/* 스크롤바 전체 */
 ::-webkit-scrollbar {
   width: 7px;
 }
 
-/* 스크롤바 트랙 */
+
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 10px;
 }
 
-/* 스크롤바 핸들 */
+
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 10px;
 }
 
-/* 스크롤바 핸들 호버 시 */
+
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }

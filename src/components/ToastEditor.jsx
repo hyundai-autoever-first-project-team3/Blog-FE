@@ -1,4 +1,5 @@
 import React from 'react';
+import { ReactSVG } from 'react-svg';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import { Editor, Viewer } from '@toast-ui/react-editor';
 import '../styles/Editor.css';
@@ -7,12 +8,14 @@ import color from '@toast-ui/editor-plugin-color-syntax';
 import 'tui-color-picker/dist/tui-color-picker.css';
 import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-syntax.css';
 import arrow from '../assets/Arrow left.svg';
+import Arrowdown from '../assets/Arrow down.svg';
 
 class MyComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
+      title: '', // 제목 상태 추가
+      content: '', // 본문 상태 추가
     };
     this.editorRef = React.createRef();
     this.previewRef = React.createRef();
@@ -21,13 +24,14 @@ class MyComponent extends React.Component {
   handleEditorChange = () => {
     const editorInstance = this.editorRef.current.getInstance();
     const markdown = editorInstance.getMarkdown();
-    this.previewRef.current.getInstance().setMarkdown(markdown);
+    this.setState({ content: markdown }); // 본문 상태 업데이트
+    this.previewRef.current.getInstance().setMarkdown(`# ${this.state.title}\n\n${markdown}`); // 제목과 본문을 함께 업데이트
   };
 
   handleTitleChange = (event) => {
     const title = event.target.value;
-    this.setState({ title });
-    this.previewRef.current.getInstance().setMarkdown(`# ${title}`);
+    this.setState({ title }); // 제목 상태 업데이트
+    this.previewRef.current.getInstance().setMarkdown(`# ${title}\n\n${this.state.content}`); // 제목과 본문을 함께 업데이트
   };
 
   handleGoBack = () => {
@@ -41,9 +45,9 @@ class MyComponent extends React.Component {
           <input
             type="text"
             placeholder="제목을 입력하세요"
-            className="pl-2 m-4 text-4xl font-bold text-gray-900 outline-none"
+            className="pl-2 m-4 text-2xl font-bold text-gray-900 outline-none"
             value={this.state.title}
-            onChange={this.handleTitleChange}
+            onChange={this.handleTitleChange} // 제목 변경 핸들러 추가
           />
           <div className="flex px-3 m-3 space-x-2">
             <div className="relative w-full">
@@ -56,20 +60,13 @@ class MyComponent extends React.Component {
                 <option>민코딩</option>
               </select>
               <div className="absolute inset-y-0 flex items-center px-2 pointer-events-none right-1">
-                <svg
-                  className="w-4 h-4 text-gray-700"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
+                <ReactSVG
+                  src={Arrowdown}
+                  beforeInjection={(svg) => {
+                    svg.classList.add('text-gray-700');
+                    svg.setAttribute('style', 'fill: currentColor');
+                  }}
+                />
               </div>
             </div>
             <div className="relative w-full">
@@ -82,20 +79,13 @@ class MyComponent extends React.Component {
                 <option>PYTHON</option>
               </select>
               <div className="absolute inset-y-0 flex items-center px-2 pointer-events-none right-1">
-                <svg
-                  className="w-4 h-4 text-gray-700"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
+                <ReactSVG
+                  src={Arrowdown}
+                  beforeInjection={(svg) => {
+                    svg.classList.add('text-gray-700');
+                    svg.setAttribute('style', 'fill: currentColor');
+                  }}
+                />
               </div>
             </div>
             <div className="relative w-full">
@@ -108,20 +98,13 @@ class MyComponent extends React.Component {
                 <option></option>
               </select>
               <div className="absolute inset-y-0 flex items-center px-2 pointer-events-none right-1">
-                <svg
-                  className="w-4 h-4 text-gray-700"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
+                <ReactSVG
+                  src={Arrowdown}
+                  beforeInjection={(svg) => {
+                    svg.classList.add('text-gray-700');
+                    svg.setAttribute('style', 'fill: currentColor');
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -142,19 +125,18 @@ class MyComponent extends React.Component {
                 ["code", "codeblock"],
               ]}
               ref={this.editorRef}
-              onChange={this.handleEditorChange}
+              onChange={this.handleEditorChange} // 본문 변경 핸들러 추가
             />
           </div>
           <div className="flex items-center justify-between py-1.5 editor-footer">
-          <button
-            className="flex items-center px-2 py-2 pl-1 font-bold text-white duration-150 bg-red-500 rounded-2xl hover:bg-red-700"
-            onClick={this.handleGoBack}
-          >
-            <img src={arrow} alt="Arrow left" />
-            나가기
-          </button>
+            <button
+              className="flex items-center px-2 py-2 font-bold text-gray-400 duration-150 rounded-xl hover:bg-red-500 hover:text-white"
+              onClick={this.handleGoBack}
+            >
+              나가기
+            </button>
             <div className="flex space-x-2">
-              <button className="px-4 py-2 font-bold text-white duration-150 bg-blue-500 rounded hover:bg-blue-700">
+              <button className="px-4 py-2 font-bold text-green-400 duration-150 rounded hover:text-green-600">
                 임시저장
               </button>
               <button className="px-4 py-2 font-bold text-white duration-150 bg-green-500 rounded hover:bg-green-700">
@@ -164,7 +146,7 @@ class MyComponent extends React.Component {
           </div>
         </div>
         <div className="w-1/2 p-5 bg-blue-50 preview-container">
-          <Viewer ref={this.previewRef} initialValue={this.state.title} />
+          <Viewer ref={this.previewRef} initialValue={`# ${this.state.title}\n\n${this.state.content}`} /> {/* 제목과 본문을 함께 렌더링 */}
         </div>
       </div>
     );
