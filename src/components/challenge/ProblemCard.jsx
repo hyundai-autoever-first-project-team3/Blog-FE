@@ -7,39 +7,42 @@ import { faMedal } from "@fortawesome/free-solid-svg-icons";
 const ProblemCard = () => {
   const tags = ["hard", "medium", "easy"];
   return (
-    <div className="flex min-h-30 justify-between h-full py-5 px-3 my-5 border-2 p-2 rounded-lg shadow-sm">
-      <div className="flex flex-col px-3">
-        <div className="text-xl font-semibold mb-2">경로찾기</div>
-        <div className="text-lg">백준</div>
-        <div className="text- lg">{tags[0]}</div>
+    <div className="relative flex min-h-30 justify-between h-full py-5 px-3 my-5 border-2 p-2 rounded-lg shadow-sm">
+      <div className="flex flex-row justify-between w-5/6">
+        <div className="flex flex-col px-3">
+          <div className="text-xl font-semibold mb-2">경로찾기</div>
+          <div className="text-lg">백준</div>
+          <div className="text- lg">{tags[0]}</div>
+        </div>
+
+        <div className="flex flex-row items-center ">
+          <div className="flex flex-col mx-4 gap-2">
+            <Button
+              className="my-2"
+              variant="outlined"
+              color="success"
+              style={{ borderRadius: "1rem" }}
+            >
+              문제링크
+            </Button>
+            <Button
+              className="my-2"
+              variant="contained"
+              color="success"
+              style={{ borderRadius: "1rem" }}
+            >
+              토론방
+            </Button>
+          </div>
+        </div>
       </div>
 
-      <div className="flex flex-row items-center ">
-        <div className="flex flex-col mx-4 ">
-          <Button
-            className="my-2"
-            variant="outlined"
-            color="success"
-            style={{ borderRadius: "1rem" }}
-          >
-            질문방
-          </Button>
-          <Button
-            className="my-2"
-            variant="contained"
-            color="success"
-            style={{ borderRadius: "1rem" }}
-          >
-            도전하기
-          </Button>
-        </div>
-        <div className="absolute top-0 right-5">
-          <FontAwesomeIcon
-            icon={faMedal}
-            style={{ color: "#FFD43B" }}
-            className="fa-4x"
-          />
-        </div>
+      <div className="absolute top-0 right-5">
+        <FontAwesomeIcon
+          icon={faMedal}
+          style={{ color: "#FFD43B" }}
+          className="fa-4x"
+        />
       </div>
       {/* justify-between min-h-40 h-full shadow-md rounded-md p-4 border */}
       {/* 아이콘 */}
