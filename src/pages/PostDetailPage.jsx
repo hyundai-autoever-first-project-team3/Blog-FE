@@ -1,11 +1,8 @@
 import React from "react";
-
 import Header from "../components/common/Header";
 import InfoBar from "../components/postdetail/InfoBar";
 import PageContainer from "../components/common/PageContainer";
-
 import Pagination from "@mui/material/Pagination";
-
 import Button from "@mui/material/Button";
 import Footer from "../components/postdetail/Footer";
 
@@ -13,16 +10,14 @@ const PostDetailPage = () => {
   return (
     <div>
       <Header />
-      <PageContainer>
+      <PageContainer className="xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3">
         <h1
           className="text-5xl font-extrabold"
           style={{ marginBottom: "2rem" }}
         >
           글제목 Lorem ipsum dolor sit amet.
         </h1>
-
         <InfoBar />
-
         <div className="tagwrap">
           <Button
             variant="outlined"
@@ -56,12 +51,9 @@ const PostDetailPage = () => {
           />
         </div>
         <Footer />
-        <div className="flex flex-row content-center "></div>
-        <Pagination
-          className="my-28 justify-center"
-          count={10}
-          color="success"
-        />
+        <div className="flex items-center justify-center w-full">
+          <Pagination count={10} color="success" />
+        </div>
       </PageContainer>
     </div>
   );
