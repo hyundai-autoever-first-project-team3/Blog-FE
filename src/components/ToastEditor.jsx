@@ -146,7 +146,7 @@ class MyComponent extends React.Component {
           </div>
         </div>
         <div className="w-1/2 p-5 bg-blue-50 preview-container">
-          <Viewer ref={this.previewRef} initialValue={`# ${this.state.title}\n\n${this.state.content}`} /> {/* 제목과 본문을 함께 렌더링 */}
+          <Viewer ref={this.previewRef} initialValue={``} /> {/* 제목과 본문을 함께 렌더링 */}
         </div>
       </div>
     );
