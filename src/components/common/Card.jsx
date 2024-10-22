@@ -4,7 +4,7 @@ import React from "react";
 
 const Card = ({ profileName = "이효원", likeCount = 123 }) => {
   return (
-    <div className="flex flex-col w-full h-full px-2 min-w-[320px] max-w-[720px] shadow-md">
+    <div className="flex flex-col w-full h-full px-2 min-w-[320px] max-w-[720px] shadow-md border hover:bg-gray-100 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
       <img
         src="https://velog.velcdn.com/images/k-svelte-master/post/43c86caf-fed8-4ab2-a98a-990b565efe0a/image.gif
 "

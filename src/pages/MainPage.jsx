@@ -10,14 +10,14 @@ const MainPage = () => {
     <PageContainer>
       <Header />
       <TabBar />
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-2 px-2">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 px-2">
         {Array(9)
           .fill(0)
           .map((item) => (
             <ChallengeCard />
           ))}
       </div>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-2 px-2">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 px-2">
         {Array(9)
           .fill(0)
           .map((item) => (
