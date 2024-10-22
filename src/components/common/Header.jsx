@@ -12,7 +12,7 @@ const Header = () => {
 
   const handleKakaoLogin = () => {
     window.location.href =
-      "http://codingcare.site/api/oauth2/authorization/kakao";
+      "https://codingcare.site/api/oauth2/authorization/kakao";
   };
   const handleOpenModal = () => {
     setModal(true);
