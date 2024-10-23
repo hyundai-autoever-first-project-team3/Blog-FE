@@ -1,0 +1,46 @@
+name: CI/CD Front Pipeline
+
+on:
+  push:
+    branches: [ "master" ]
+
+# 워크플로우가 저장소의 콘텐츠를 읽을 수 있는 권한을 갖도록 설정
+permissions:
+  contents: read
+
+jobs:
+  Front-Build-Deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Build App
+        run: |
+          cd ./src
+          npm install
+          npm run build
+
+      - name: Clean target directory
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          port: 22
+          script: sudo rm -rf /home/ubuntu/nginx-vol/build/*
+
+      - name: Deploy to Prod Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          source: "./build/*"  # build 폴더 안의 모든 파일을 가리킵니다.
+          target: "/home/ubuntu/nginx-vol/"  # 이 경로는 EC2 서버의 배포 경로입니다.

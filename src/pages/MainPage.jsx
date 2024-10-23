@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageContainer from "../components/common/PageContainer";
 import Header from "../components/common/Header";
 import TabBar from "../components/common/TabBar";
 import Card from "../components/common/Card";
 import ChallengeCard from "../components/challenge/ChallengeCard";
+import { getCookie } from "../api/cookie";
 
 const MainPage = () => {
+  const [token, setToken] = React.useState("");
+
+  console.log(token);
+
+  useEffect(() => {
+    const data = getCookie("accessToken");
+
+    setToken("dd", data);
+  }, []);
   return (
     <PageContainer>
       <Header />
