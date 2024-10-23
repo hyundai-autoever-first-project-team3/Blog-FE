@@ -14,7 +14,7 @@ const MainPage = () => {
   useEffect(() => {
     const data = getCookie("accessToken");
     setCookie("ddddd", "@3423");
-    setToken("dd", data);
+    setToken(data);
   }, []);
   return (
     <PageContainer>
