@@ -18,11 +18,6 @@ const PostDetailPage = () => {
   console.log(postsDetail);
 
   useEffect(() => {
-    setCookie(
-      "accessToken",
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb2NpYWwiOiJrYWthbyIsImVtYWlsIjoiZ29jaGVsaW5AbmF2ZXIuY29tIiwicHJvZmlsZUltYWdlIjoiaHR0cDovL2sua2FrYW9jZG4ubmV0L2RuL29iT0dmL2J0c0pOZmxZb09XL0QxS2lzNU5ycTBkOExQWFliYjlHNzEvaW1nXzY0MHg2NDAuanBnIiwicm9sZSI6Ik1FTUJFUiIsIm5hbWUiOiLqs6DssYTrprAiLCJpYXQiOjE3Mjk3MTQxMjUsImV4cCI6MTcyOTc1MDEyNX0.rEgpc45T-Gu0My17Bp8tkjOiUEb-N43tfsBWBP4ZwUI"
-    );
-
     getTILDetail({ tilId: postId }).then((res) => setPostsDetail(res.data.til));
   }, [postId]);
 
@@ -33,7 +28,7 @@ const PostDetailPage = () => {
         <h1 className="text-5xl font-extrabold mb-8 mt-10 lg:mt-20">
           {postsDetail?.title}
         </h1>
-        <InfoBar />
+        <InfoBar createdAt={postsDetail?.createdAt} />
         <div className="tagwrap">
           <Chip
             icon={<Tag />}

@@ -2,7 +2,21 @@ import React from "react";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-function InfoBar() {
+const InfoBar = ({
+  id,
+  createdAt,
+  updatedAt,
+  writerNickname,
+  likeCount = 0,
+  onClick,
+}) => {
+  // 날짜 가공
+  const formattedDate = new Date(createdAt).toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -10,7 +24,7 @@ function InfoBar() {
           <span className="font-bold" style={{ marginRight: "1rem" }}>
             고채린
           </span>
-          <span>2024년 10월 21일</span>
+          <span>{createdAt}</span>
         </div>
         <div>
           {/* 로그인 여부에 따라 버튼 노출 달라짐 */}
@@ -30,6 +44,6 @@ function InfoBar() {
       </div>
     </div>
   );
-}
+};
 
 export default InfoBar;
