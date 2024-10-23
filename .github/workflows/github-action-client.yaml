@@ -27,17 +27,6 @@ jobs:
           npm install
           npm run build
 
-      # 기존 파일 삭제
-      - name: Clean target directory on EC2
-        uses: appleboy/ssh-action@v0.1.2
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          script: |
-            rm -rf /home/ubuntu/nginx-vol/build/*
-
-      # 새 빌드 파일 배포
       - name: Deploy to Prod Server
         uses: appleboy/scp-action@master
         with:
