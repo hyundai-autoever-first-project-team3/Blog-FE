@@ -28,8 +28,14 @@ jobs:
           npm run build
 
       - name: Clean target directory
-        run: ssh -i ${{ secrets.EC2_KEY }} ubuntu@${{ secrets.EC2_HOST }} 'rm -rf /home/ubuntu/nginx-vol/build/*'
-
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          port: 22
+          script: rm -rf /home/ubuntu/nginx-vol/build/*
+          
       - name: Deploy to Prod Server
         uses: appleboy/scp-action@master
         with:
