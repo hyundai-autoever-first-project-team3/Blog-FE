@@ -4,7 +4,7 @@ import Header from "../components/common/Header";
 import TabBar from "../components/common/TabBar";
 import Card from "../components/common/Card";
 import ChallengeCard from "../components/challenge/ChallengeCard";
-import { getCookie } from "../api/cookie";
+import { getCookie, setCookie } from "../api/cookie";
 
 const MainPage = () => {
   const [token, setToken] = React.useState("");
@@ -13,8 +13,8 @@ const MainPage = () => {
 
   useEffect(() => {
     const data = getCookie("accessToken");
-
-    setToken("dd", data);
+    setCookie("ddddd", "@3423");
+    setToken(data);
   }, []);
   return (
     <PageContainer>

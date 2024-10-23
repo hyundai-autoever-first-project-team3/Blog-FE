@@ -2,10 +2,14 @@
 import { Cookies } from "react-cookie";
 
 const cookies = new Cookies();
+
+const options = {
+  path: "/",
+};
 //쿠키에 값을 저장할때
 export const setCookie = (name, value, option) => {
   return new Promise((resolve) => {
-    cookies.set(name, value, { ...option });
+    cookies.set(name, value, { options, ...option });
     resolve();
   });
 };
