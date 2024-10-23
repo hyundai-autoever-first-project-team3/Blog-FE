@@ -10,10 +10,14 @@ import {
 const Header = () => {
   const [modal, setModal] = React.useState(false);
 
-  const handleKakaoLogin = () => {
-    window.location.href =
-      "https://codingcare.site/api/oauth2/authorization/kakao";
-  };
+  // const handleKakaoLogin = () => {
+  //   window.location.href =
+  //     "https://codingcare.site/api/oauth2/authorization/kakao";
+  // };
+  // const handleGithubLogin = () => {
+  //   window.location.href =
+  //     "https://codingcare.site/api/oauth2/authorization/github";
+  // };
   const handleOpenModal = () => {
     setModal(true);
   };
@@ -51,7 +55,8 @@ const Header = () => {
             width: 400,
             bgcolor: "background.paper",
             boxShadow: 24,
-            p: 4,
+            paddingY: 3,
+            paddingX: 4,
             borderRadius: "8px",
           }}
         >
@@ -62,11 +67,16 @@ const Header = () => {
           >
             <FontAwesomeIcon icon={faX} />
           </IconButton>
-          <div className="flex flex-col ">
-            <div className="text-lg font-semibold">로그인 모달</div>
-            <div className="text-base">소셜 계정으로 로그인</div>
-            <div>
-              <button onClick={handleKakaoLogin}>카카오</button>
+          <div className="flex flex-col">
+            <div className="text-xl font-semibold">로그인</div>
+            <div className="text-lg mb-5">소셜 계정으로 로그인</div>
+            <div className="flex flex-col gap-3">
+              <button className="bg-yellow-400 text-yellow-950 rounded-md py-3">
+                카카오 계정으로 로그인
+              </button>
+              <button className="bg-black text-white rounded-md py-3">
+                GitHub 계정으로 로그인
+              </button>
             </div>
           </div>
         </Box>
