@@ -2,7 +2,7 @@ name: CI/CD Front Pipeline
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "dev-fe" ]
 
 # 워크플로우가 저장소의 콘텐츠를 읽을 수 있는 권한을 갖도록 설정
 permissions:
@@ -27,15 +27,17 @@ jobs:
           npm install
           npm run build
 
-      - name: Clean target directory
-        uses: appleboy/ssh-action@v0.1.8
+      # 기존 파일 삭제
+      - name: Clean target directory on EC2
+        uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          port: 22
-          script: sudo rm -rf /home/ubuntu/nginx-vol/build/*
+          script: |
+            rm -rf /home/ubuntu/nginx-vol/build/*
 
+      # 새 빌드 파일 배포
       - name: Deploy to Prod Server
         uses: appleboy/scp-action@master
         with:
