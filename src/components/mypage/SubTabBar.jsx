@@ -7,7 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SubTabBar = ({ value, handleChange, tabData }) => {
+const SubTabBar = ({ value, handleChange }) => {
   return (
     <div className="flex flex-row justify-center items-center py-3 px-2">
       <Tabs
