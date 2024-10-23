@@ -1,5 +1,4 @@
 import React from "react";
-import ChallengeCard from "../components/challenge/ChallengeCard";
 import Header from "../components/common/Header";
 import PageContainer from "../components/common/PageContainer";
 import ProblemCard from "../components/challenge/ProblemCard";
