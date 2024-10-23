@@ -14,6 +14,10 @@ const Header = () => {
     window.location.href =
       "https://codingcare.site/api/oauth2/authorization/kakao";
   };
+  const handleGithubLogin = () => {
+    window.location.href =
+      "https://codingcare.site/api/oauth2/authorization/github";
+  };
   const handleOpenModal = () => {
     setModal(true);
   };
@@ -67,6 +71,9 @@ const Header = () => {
             <div className="text-base">소셜 계정으로 로그인</div>
             <div>
               <button onClick={handleKakaoLogin}>카카오</button>
+            </div>
+            <div>
+              <button onClick={handleGithubLogin}>깃허브</button>
             </div>
           </div>
         </Box>
