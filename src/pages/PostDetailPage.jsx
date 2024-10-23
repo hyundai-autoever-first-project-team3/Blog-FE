@@ -3,38 +3,36 @@ import Header from "../components/common/Header";
 import InfoBar from "../components/postdetail/InfoBar";
 import PageContainer from "../components/common/PageContainer";
 import Pagination from "@mui/material/Pagination";
-import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
 import Footer from "../components/postdetail/Footer";
+import { Tag } from "@mui/icons-material";
 
 const PostDetailPage = () => {
   return (
     <div>
       <Header />
       <PageContainer className="xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3">
-        <h1
-          className="text-5xl font-extrabold"
-          style={{ marginBottom: "2rem" }}
-        >
+        <h1 className="text-5xl font-extrabold mb-8 mt-10 lg:mt-20">
           글제목 Lorem ipsum dolor sit amet.
         </h1>
         <InfoBar />
         <div className="tagwrap">
-          <Button
+          <Chip
+            icon={<Tag />}
+            label="DFS"
             variant="outlined"
             color="success"
-            style={{ borderRadius: "1rem", margin: "1rem" }}
-          >
-            #DFS
-          </Button>
-          <Button
+            className="m-1 my-2"
+          />
+          <Chip
+            icon={<Tag />}
+            label="BFS"
             variant="outlined"
             color="success"
-            style={{ borderRadius: "1rem" }}
-          >
-            #BFS
-          </Button>
+            className="m-1 my-2"
+          />
         </div>
-        <div>
+        <div className="mt-10">
           <span className="text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo at aut
             dolor quidem quam iste impedit ipsa nihil consequuntur deserunt
@@ -51,7 +49,7 @@ const PostDetailPage = () => {
           />
         </div>
         <Footer />
-        <div className="flex items-center justify-center w-full">
+        <div className="flex items-center justify-center w-full my-10">
           <Pagination count={10} color="success" />
         </div>
       </PageContainer>

@@ -1,18 +1,11 @@
 import React from "react";
-import Button from "@mui/material/Button";
+import { Button, IconButton } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function InfoBar() {
   return (
     <div>
-      <div
-        className="info"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
+      <div className="flex justify-between items-center">
         <div>
           <span className="font-bold" style={{ marginRight: "1rem" }}>
             고채린
@@ -21,11 +14,11 @@ function InfoBar() {
         </div>
         <Button
           variant="outlined"
-          color="success"
-          style={{ borderRadius: "1rem" }}
+          color="#eee"
+          startIcon={<FavoriteIcon sx={{ color: "#F20789" }} />}
+          sx={{ borderRadius: "1rem" }}
         >
-          <FavoriteIcon />
-          카운트
+          101
         </Button>
       </div>
     </div>

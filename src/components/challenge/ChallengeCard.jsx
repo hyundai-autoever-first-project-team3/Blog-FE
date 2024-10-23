@@ -1,4 +1,7 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { faMedal } from "@fortawesome/free-solid-svg-icons";
 
 const ChallengeCard = () => {
   const tags = ["백준-동전", "프로그래머스-등굣길", "LeetCode-Prefix"];
