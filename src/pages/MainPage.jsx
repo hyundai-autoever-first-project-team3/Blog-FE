@@ -22,7 +22,7 @@ const MainPage = () => {
   useEffect(() => {
     setCookie(
       "accessToken",
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoi7J207Zqo7JuQIiwic29jaWFsIjoia2FrYW8iLCJlbWFpbCI6InltajA3MTY4QG5hdmVyLmNvbSIsInByb2ZpbGVJbWFnZSI6Imh0dHA6Ly9rLmtha2FvY2RuLm5ldC9kbi9kZkFXemcvYnRzSm43bVlmZm8vYzdhZ3Frb2NZTjQ1Zjd4SEIyMXN2Sy9pbWdfNjQweDY0MC5qcGciLCJyb2xlIjoiTUVNQkVSIiwiaWF0IjoxNzI5NjgwMDIwLCJleHAiOjE3Mjk2ODM2MjB9.u2lfSAabfwXrCeuMH-lr0FAGVq4ZNM2PlqAe6qwBZ1o"
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiTUVNQkVSIiwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91Lzk3OTM5MjA3P3Y9NCIsImVtYWlsIjoicGptMjU3MUBjb2RpbmdjYXJlLnNpdGUiLCJzb2NpYWwiOiJnaXRodWIiLCJuYW1lIjoicGptMjU3MSIsImlhdCI6MTcyOTY5NjA0MywiZXhwIjoxNzI5NzMyMDQzfQ.EClHdQL2KGQKw99Gh_El3Clu6dwDKV9c1FhTCGz1X2Q"
     );
     getTIL({ pageNumber: 0 }).then((res) => setPosts(res.data.content));
   }, []);
