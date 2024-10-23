@@ -1,10 +1,8 @@
 import React from 'react'
-import ToastEditor from '../components/ToastEditor';
+import Editor from '../components/EditorPage/MdEditor';
 const PostWritePage = () => {
   return (
-    <div>
-      <ToastEditor />
-    </div>
+<Editor/>
   );
 }
 

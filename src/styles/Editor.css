@@ -1,54 +1,33 @@
-.toastui-editor-defaultUI-toolbar{
-  background-color: transparent; 
-  border: none;
-}
-.preview-container{
-  overflow-y: auto; 
-  height: calc(100vh - 5px);
-} */
-.editor-container {
-  flex-direction: column;
-}
-.container {
-  display: flex;
-}
-.editor-wrapper {
-  flex: 1;
-  overflow-y: auto; 
-}
-
-.toastui-editor-tabs {
+.w-md-editor-toolbar button[data-name="edit"],
+.w-md-editor-toolbar button[data-name="live"],
+.w-md-editor-toolbar button[data-name="preview"] {
   display: none;
 }
-.toastui-editor-defaultUI {
-  border: none;
+.preview-content pre {
+  background-color: #004 !important; 
+  color: #fff !important; 
+  padding: 1rem;
+  border-radius: 0.5rem; 
+  overflow: auto;
 }
 
-.editor-footer {
-  position: fixed;
-  bottom: 0;
-  width: 48%; 
-  display: flex;
-  justify-content: flex; 
-  border-top: 1px solid rgb(230, 230, 235);
+.preview-content * {
+  background-color: transparent !important;
 }
 
 ::-webkit-scrollbar {
   width: 7px;
 }
 
-
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 10px;
 }
 
-
 ::-webkit-scrollbar-thumb {
   background: #888;
   border-radius: 10px;
 }
-
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
