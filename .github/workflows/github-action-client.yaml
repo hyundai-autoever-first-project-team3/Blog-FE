@@ -34,8 +34,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           port: 22
-          script: rm -rf /home/ubuntu/nginx-vol/build/*
-          
+          script: sudo rm -rf /home/ubuntu/nginx-vol/build/*
+
       - name: Deploy to Prod Server
         uses: appleboy/scp-action@master
         with:
