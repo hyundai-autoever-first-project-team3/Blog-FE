@@ -41,7 +41,7 @@ const MyPage = () => {
         <SubTabBar value={selectedTab} handleChange={handleChange} />
         {selectedTab === "write" && (
           <div className="flex flex-col gap-3">
-            {myPosts.map((item) => (
+            {myPosts?.map((item) => (
               <MyCard
                 id={item.tilId}
                 title={item.title}
@@ -55,7 +55,7 @@ const MyPage = () => {
         )}
         {selectedTab === "like" && (
           <div className="flex flex-col gap-3">
-            {likedPosts.map((item) => (
+            {likedPosts?.map((item) => (
               <MyCard
                 id={item.tilId}
                 title={item.title}

@@ -6,6 +6,7 @@ import Card from "../components/common/Card";
 import ChallengeCard from "../components/challenge/ChallengeCard";
 import { getChallenges, getTIL } from "../api/main";
 import { useNavigate } from "react-router-dom";
+import { setCookie } from "../api/cookie";
 
 const MainPage = () => {
   const [selectedTab, setSelectedTab] = useState("total");
@@ -20,7 +21,7 @@ const MainPage = () => {
   useEffect(() => {
     // setCookie(
     //   "accessToken",
-    //   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiTUVNQkVSIiwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91Lzk3OTM5MjA3P3Y9NCIsImVtYWlsIjoicGptMjU3MUBjb2RpbmdjYXJlLnNpdGUiLCJzb2NpYWwiOiJnaXRodWIiLCJuYW1lIjoicGptMjU3MSIsImlhdCI6MTcyOTY5NjA0MywiZXhwIjoxNzI5NzMyMDQzfQ.EClHdQL2KGQKw99Gh_El3Clu6dwDKV9c1FhTCGz1X2Q"
+    //   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb2NpYWwiOiJnaXRodWIiLCJlbWFpbCI6InBqbTI1NzFAY29kaW5nY2FyZS5zaXRlIiwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91Lzk3OTM5MjA3P3Y9NCIsInJvbGUiOiJNRU1CRVIiLCJuYW1lIjoicGptMjU3MSIsImlhdCI6MTcyOTc1MDc0NCwiZXhwIjoxNzI5Nzg2NzQ0fQ.eeH_NF5e1602oFiyivKFPnokdFRerLvpmqfafgNK1i8"
     // );
     getTIL({ pageNumber: 0 }).then((res) => setPosts(res.data.content));
     getChallenges({ pageSize: 0 }).then((res) =>
