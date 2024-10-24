@@ -10,7 +10,6 @@ const Card = ({
   createdAt,
   writerNickname,
   likeCount = 0,
-  onClick,
 }) => {
   // 날짜 가공
   const formattedDate = new Date(createdAt).toLocaleDateString("ko-KR", {
@@ -23,7 +22,6 @@ const Card = ({
     <div
       id={id}
       className="flex flex-col w-full h-full px-2 min-w-[320px] max-w-[720px] shadow-md border hover:bg-gray-100 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1"
-      onClick={onClick}
     >
       <img
         src="https://velog.velcdn.com/images/k-svelte-master/post/43c86caf-fed8-4ab2-a98a-990b565efe0a/image.gif
