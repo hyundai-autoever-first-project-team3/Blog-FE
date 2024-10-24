@@ -34,12 +34,8 @@ function MdEditor() {
     const files = event.dataTransfer.files;
     if (files.length > 0) {
       const file = files[0];
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const imageUrl = e.target.result;
-        setValue((prevValue) => `${prevValue}\n![image](${imageUrl})`);
-      };
-      reader.readAsDataURL(file);
+      const imageUrl = URL.createObjectURL(file);
+      setValue((prevValue) => `${prevValue}\n![image](${imageUrl})`);
     }
   };
   
