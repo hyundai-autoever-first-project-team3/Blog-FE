@@ -16,8 +16,8 @@ function MdEditor() {
 
   return (
     <div className="flex h-screen" data-color-mode="light">
-      <div className="flex flex-col w-1/2 h-full">
-      <PostTitle title={title} setTitle={setTitle} />
+      <div className="flex flex-col w-full h-full sm:w-1/2">
+        <PostTitle title={title} setTitle={setTitle} />
         <MDEditor
           height="100%"
           value={value}
@@ -29,7 +29,7 @@ function MdEditor() {
         />
         <EditerFooter />
       </div>
-      <div className="flex flex-col w-1/2 h-full p-3 overflow-auto bg-sky-50">
+      <div className="flex-col hidden w-1/2 h-full p-3 overflow-auto sm:flex bg-sky-50">
         <div className="preview-content">
           <MDEditor.Markdown
             source={`# ${title}\n${value}`}
@@ -42,4 +42,3 @@ function MdEditor() {
 }
 
 export default MdEditor;
-
