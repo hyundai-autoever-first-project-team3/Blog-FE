@@ -18,16 +18,6 @@ const PostDetailPage = () => {
 
   const { postId } = useParams("postId");
 
-  // 날짜 가공
-  const formattedDate = new Date(postsDetail?.createdAt).toLocaleDateString(
-    "ko-KR",
-    {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }
-  );
-
   useEffect(() => {
     getTILDetail({ tilId: postId }).then((res) => setPostsDetail(res.data));
   }, [postId]);
@@ -40,6 +30,8 @@ const PostDetailPage = () => {
           {postsDetail?.til.title}
         </h1>
         <InfoBar
+          tilId={postsDetail?.til.id}
+          isOwner={postsDetail?.isOwner}
           userId={postsDetail?.memberWriterDto.id}
           writerId={postsDetail?.til.memberId}
           updatedAt={postsDetail?.til.updatedAt}

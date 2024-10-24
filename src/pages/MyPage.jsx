@@ -82,17 +82,17 @@ const MyPage = () => {
             <div className="flex flex-row items-center w-full gap-3">
               <CountCard
                 title="전체 작성글 개수"
-                count={statistics.tilsCount}
+                count={statistics?.tilsCount}
                 icon={faPenToSquare}
               />
               <CountCard
                 title="이번달 작성글 개수"
-                count={statistics.tilsMonthCount}
+                count={statistics?.tilsMonthCount}
                 icon={faCalendar}
               />
               <CountCard
                 title="받은 좋아요 개수"
-                count={statistics.receivedLikeCount}
+                count={statistics?.receivedLikeCount}
                 icon={faHeart}
               />
             </div>
@@ -129,11 +129,13 @@ const MyPage = () => {
               </div>
             </div>
             <div className="w-full h-[300px] xl:h-[500px] lg:h-[400px] md:h-[300px] sm:h-[300px]">
-              <SimpleBarChart />
+              <SimpleBarChart
+                data={statistics?.tilAlgorithmDto.algorithmCountList}
+              />
             </div>
 
             {/* 개인 맞춤형 문제 추천 */}
-            <div className="flex flex-col items-center justify-center p-5 bg-blue-200 border rounded-lg min-h-40">
+            <div className="flex flex-col items-center justify-center p-5 bg-blue-200 border rounded-lg min-h-40 mb-8">
               <img
                 src={characterImg}
                 alt="character"
@@ -141,7 +143,7 @@ const MyPage = () => {
               />
               <div className="flex flex-col items-center mb-2">
                 <div className="text-2xl font-semibold">
-                  {data.name}님은 {statistics?.leastValue} 알고리즘 보완이
+                  {data?.name}님은 {statistics?.leastValue} 알고리즘 보완이
                   필요해요!
                 </div>
                 <div className="text-lg font-thin">
