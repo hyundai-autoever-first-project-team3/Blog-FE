@@ -34,7 +34,7 @@ const Card = ({
       <div className="text-lg font-black truncate w-full px-1 mb-1">
         {title}
       </div>
-      <div className="text-base font-normal w-full px-1 line-clamp-3 mb-3">
+      <div className="flex-grow text-base font-normal w-full px-1 line-clamp-3 mb-3">
         {content}
       </div>
       <div className="text-sm text-gray-5 py-3">{formattedDate}</div>
