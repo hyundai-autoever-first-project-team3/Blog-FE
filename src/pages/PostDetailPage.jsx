@@ -18,7 +18,7 @@ const PostDetailPage = () => {
 
   const { postId } = useParams("postId");
 
-  console.log(postsDetail);
+  // console.log(postsDetail);
   // console.log(postsDetail.til);
   // console.log(postsDetail.memberWriterDto);
   // console.log(likeCounts);
@@ -32,7 +32,6 @@ const PostDetailPage = () => {
       <Header />
       <PageContainer className="xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3">
         <h1 className="text-5xl font-extrabold mb-8 mt-10 lg:mt-20">
-          {/* {postId?.til.title} */}
           {postsDetail?.til.title}
         </h1>
         <InfoBar
@@ -60,16 +59,21 @@ const PostDetailPage = () => {
           />
         </div>
         <Footer
-          nickname={postsDetail.memberWriterDto.nickname}
-          intro={postsDetail.memberWriterDto.intro}
-          profileImage={postsDetail.memberWriterDto.profileImage}
+          nickname={postsDetail?.memberWriterDto.nickname}
+          intro={postsDetail?.memberWriterDto.intro}
+          profileImage={postsDetail?.memberWriterDto.profileImage}
         />
         <div className="flex items-center justify-center w-full my-10">
           <Pagination count={10} color="success" />
         </div>
+        <div className="mt-12">
+          <PostComment />
+          <PostComment />
+          <PostComment />
+          <PostComment />
+          <PostComment />
+        </div>
       </PageContainer>
-
-      <PostComment />
     </>
   );
 };

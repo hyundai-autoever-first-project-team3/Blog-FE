@@ -1,9 +1,12 @@
 import React from "react";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useAuth } from "../../hooks/useAuth";
 
 const InfoBar = ({ updatedAt, writerNickname, likeCount, onClick }) => {
   // 날짜 가공
+
+  const { isLoggedIn } = useAuth;
   const formattedDate = new Date(updatedAt).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
