@@ -11,17 +11,22 @@ import { getTILDetail } from "../api/main";
 import { getLikeCount, getlikeCount } from "../api/postdetail";
 import { useParams } from "react-router-dom";
 import PostComment from "../components/postdetail/PostComment";
+import MDEditor from "@uiw/react-md-editor/nohighlight";
 
 const PostDetailPage = () => {
-  const [token, setToken] = React.useState("");
   const [postsDetail, setPostsDetail] = React.useState(null);
 
   const { postId } = useParams("postId");
 
-  // console.log(postsDetail);
-  // console.log(postsDetail.til);
-  // console.log(postsDetail.memberWriterDto);
-  // console.log(likeCounts);
+  // 날짜 가공
+  const formattedDate = new Date(postsDetail?.createdAt).toLocaleDateString(
+    "ko-KR",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+  );
 
   useEffect(() => {
     getTILDetail({ tilId: postId }).then((res) => setPostsDetail(res.data));
@@ -40,22 +45,38 @@ const PostDetailPage = () => {
           writerNickname={postsDetail?.memberWriterDto.nickname}
         />
         <div className="tagwrap">
-          <Chip
-            icon={<Tag />}
-            // label="DFS"
-            label={postsDetail?.algorithm}
-            // label={postsDetail?.til.algorithm}
-            variant="outlined"
-            color="success"
-            className="m-1 my-2"
-          />
+          {postsDetail?.site && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.site}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
+          {postsDetail?.language && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.language}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
+          {postsDetail?.algorithm && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.algorithm}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
         </div>
         <div className="mt-10">
-          <span className="text-lg">{postsDetail?.til.content}</span>
-
-          <img
-            src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
-            alt=""
+          <MDEditor.Markdown
+            source={postsDetail?.content}
+            style={{ whiteSpace: "pre-wrap" }}
           />
         </div>
         <Footer

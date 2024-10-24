@@ -3,6 +3,13 @@
 .w-md-editor-toolbar button[data-name="preview"] {
   display: none;
 }
+
+@media (max-width: 640px) {
+  .w-md-editor-toolbar button[data-name="fullscreen"] {
+    display: none;
+  }
+}
+
 .preview-content pre {
   background-color: #004 !important; 
   color: #fff !important; 

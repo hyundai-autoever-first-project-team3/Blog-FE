@@ -4,13 +4,14 @@ import Header from "../components/common/Header";
 import TabBar from "../components/common/TabBar";
 import Card from "../components/common/Card";
 import ChallengeCard from "../components/challenge/ChallengeCard";
-import { setCookie } from "../api/cookie";
-import { getTIL } from "../api/main";
+import { getChallenges, getTIL } from "../api/main";
 import { useNavigate } from "react-router-dom";
+import { setCookie } from "../api/cookie";
 
 const MainPage = () => {
   const [selectedTab, setSelectedTab] = useState("total");
-  const [posts, setPosts] = React.useState(null);
+  const [posts, setPosts] = React.useState([]);
+  const [challenges, setChallenges] = React.useState([]);
   const navigate = useNavigate();
 
   const handleTabChange = (event, newValue) => {
@@ -18,11 +19,14 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    // setCookie(
-    //   "accessToken",
-    //   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiTUVNQkVSIiwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91Lzk3OTM5MjA3P3Y9NCIsImVtYWlsIjoicGptMjU3MUBjb2RpbmdjYXJlLnNpdGUiLCJzb2NpYWwiOiJnaXRodWIiLCJuYW1lIjoicGptMjU3MSIsImlhdCI6MTcyOTY5NjA0MywiZXhwIjoxNzI5NzMyMDQzfQ.EClHdQL2KGQKw99Gh_El3Clu6dwDKV9c1FhTCGz1X2Q"
-    // );
+    setCookie(
+      "accessToken",
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb2NpYWwiOiJrYWthbyIsImVtYWlsIjoieW1qMDcxNjhAbmF2ZXIuY29tIiwicHJvZmlsZUltYWdlIjoiaHR0cDovL2sua2FrYW9jZG4ubmV0L2RuL2RmQVd6Zy9idHNKbjdtWWZmby9jN2FncWtvY1lONDVmN3hIQjIxc3ZLL2ltZ182NDB4NjQwLmpwZyIsInJvbGUiOiJNRU1CRVIiLCJuYW1lIjoi7J207Zqo7JuQIiwiaWF0IjoxNzI5NzUxMDg1LCJleHAiOjE3Mjk3ODcwODV9.hvJm84rtzssOWMjVbF3SCjH4rkFRqCIVikIxQc_36_s"
+    );
     getTIL({ pageNumber: 0 }).then((res) => setPosts(res.data.content));
+    getChallenges({ pageSize: 0 }).then((res) =>
+      setChallenges(res.data.content)
+    );
   }, []);
   return (
     <>
@@ -51,11 +55,14 @@ const MainPage = () => {
         )}
         {selectedTab === "challenge" && (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 px-2">
-            {Array(9)
-              .fill(0)
-              .map((item, index) => (
-                <ChallengeCard key={index} />
-              ))}
+            {challenges.map((item) => (
+              <ChallengeCard
+                key={item.id}
+                algorithm={item.algorithm}
+                viewCount={item.viewCount}
+                createdAt={item.createdAt}
+              />
+            ))}
           </div>
         )}
       </PageContainer>

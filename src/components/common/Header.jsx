@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Button, IconButton, Menu, MenuItem, Modal } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -30,14 +30,14 @@ const Header = () => {
     navigate(url);
   };
 
-  // const handleKakaoLogin = () => {
-  //   window.location.href =
-  //     "https://codingcare.site/api/oauth2/authorization/kakao";
-  // };
-  // const handleGithubLogin = () => {
-  //   window.location.href =
-  //     "https://codingcare.site/api/oauth2/authorization/github";
-  // };
+  const handleKakaoLogin = () => {
+    window.location.href =
+      "https://codingcare.site/api/oauth2/authorization/kakao";
+  };
+  const handleGithubLogin = () => {
+    window.location.href =
+      "https://codingcare.site/api/oauth2/authorization/github";
+  };
 
   // 로그인 모달
   const handleModalOpen = () => {
@@ -54,43 +54,48 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center py-3 px-2 shadow-sm">
-        <div className="text-2xl font-extrabold" onClick={() => navigate("/")}>
-          CodingCare
-        </div>
-        <div className="flex flex-row gap-3 items-center">
-          <IconButton aria-label="alarm">
-            <FontAwesomeIcon icon={faBell} />
-          </IconButton>
-          <IconButton aria-label="search">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </IconButton>
-          {isLoggedIn ? (
-            <div className="flex flex-row items-center gap-1">
-              <img
-                src="https://velog.velcdn.com/images/jhbae0420/post/fde34804-5927-4b81-a621-5b125c945aed/image.png"
-                alt="profile"
-                className="w-10 h-10 object-cover rounded-full"
-              />
-              <IconButton
-                onClick={handleMenuClick}
-                size="small"
-                aria-controls={menuOpen ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={menuOpen ? "true" : undefined}
+      <div className="flex flex-row justify-between items-center shadow-sm p-3">
+        <div className="w-full max-w-[1400px] m-auto flex flex-row justify-between">
+          <div
+            className="text-2xl font-extrabold"
+            onClick={() => navigate("/")}
+          >
+            CodingCare
+          </div>
+          <div className="flex flex-row gap-3 items-center">
+            <IconButton aria-label="alarm">
+              <FontAwesomeIcon icon={faBell} />
+            </IconButton>
+            <IconButton aria-label="search">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </IconButton>
+            {isLoggedIn ? (
+              <div className="flex flex-row items-center gap-1">
+                <img
+                  src="https://velog.velcdn.com/images/jhbae0420/post/fde34804-5927-4b81-a621-5b125c945aed/image.png"
+                  alt="profile"
+                  className="w-10 h-10 object-cover rounded-full"
+                />
+                <IconButton
+                  onClick={handleMenuClick}
+                  size="small"
+                  aria-controls={menuOpen ? "account-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={menuOpen ? "true" : undefined}
+                >
+                  <FontAwesomeIcon icon={faCaretDown} />
+                </IconButton>
+              </div>
+            ) : (
+              <Button
+                variant="contained"
+                sx={{ color: "white", backgroundColor: "black" }}
+                onClick={handleModalOpen}
               >
-                <FontAwesomeIcon icon={faCaretDown} />
-              </IconButton>
-            </div>
-          ) : (
-            <Button
-              variant="contained"
-              sx={{ color: "white", backgroundColor: "black" }}
-              onClick={handleModalOpen}
-            >
-              로그인
-            </Button>
-          )}
+                로그인
+              </Button>
+            )}
+          </div>
         </div>
       </div>
       <Modal open={modal} onClose={handleModalClose}>
@@ -119,10 +124,16 @@ const Header = () => {
             <div className="text-xl font-semibold">로그인</div>
             <div className="text-lg mb-5">소셜 계정으로 로그인</div>
             <div className="flex flex-col gap-3">
-              <button className="bg-yellow-400 text-yellow-950 rounded-md py-3">
+              <button
+                className="bg-yellow-400 text-yellow-950 rounded-md py-3"
+                onClick={handleKakaoLogin}
+              >
                 카카오 계정으로 로그인
               </button>
-              <button className="bg-black text-white rounded-md py-3">
+              <button
+                className="bg-black text-white rounded-md py-3"
+                onClick={handleGithubLogin}
+              >
                 GitHub 계정으로 로그인
               </button>
             </div>
@@ -153,6 +164,12 @@ const Header = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
+        <MenuItem
+          sx={{ paddingY: "12px" }}
+          onClick={() => handleMenuItemClick("/posts/write")}
+        >
+          새 글 작성
+        </MenuItem>
         <MenuItem
           sx={{ paddingY: "12px" }}
           onClick={() => handleMenuItemClick("/mypage")}
