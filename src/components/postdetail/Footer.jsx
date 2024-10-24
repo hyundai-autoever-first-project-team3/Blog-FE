@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 function Footer() {
   return (
     <div>
-      <div className="flex flex-row justify-between items-center mb-40 h-32 ">
+      <div className="flex flex-row justify-between items-center my-20 h-32 ">
         <div className="flex flex-row items-center">
           <img
             className="size-32 rounded-full"

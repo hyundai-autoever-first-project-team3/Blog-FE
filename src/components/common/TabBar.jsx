@@ -7,12 +7,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const TabBar = () => {
-  const [value, setValue] = React.useState("total");
+const TabBar = ({ value, handleChange }) => {
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
     <div className="flex flex-row justify-start items-center py-3 px-2">

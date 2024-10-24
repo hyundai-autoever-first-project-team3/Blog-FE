@@ -15,9 +15,11 @@
     "@testing-library/user-event": "^13.5.0",
     "@uiw/react-md-editor": "^4.0.4",
     "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
     "postcss": "^8.4.47",
     "postcss-nesting": "^13.0.0",
     "react": "^18.3.1",
+    "react-cookie": "^7.2.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.1",
     "react-router-dom": "^6.27.0",
@@ -29,7 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -55,5 +57,6 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "postcss-import": "^16.1.0"
-  }
+  },
+  "proxy": "https://codingcare.site"
 }

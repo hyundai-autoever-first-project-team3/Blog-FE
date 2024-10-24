@@ -1,61 +1,83 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/common/Header";
 import InfoBar from "../components/postdetail/InfoBar";
 import PageContainer from "../components/common/PageContainer";
 import Pagination from "@mui/material/Pagination";
-import Button from "@mui/material/Button";
+import Chip from "@mui/material/Chip";
 import Footer from "../components/postdetail/Footer";
+import { Tag } from "@mui/icons-material";
+import { setCookie } from "../api/cookie";
+import { getTILDetail } from "../api/main";
+import { useParams } from "react-router-dom";
+import MDEditor from "@uiw/react-md-editor/nohighlight";
 
 const PostDetailPage = () => {
+  const [postsDetail, setPostsDetail] = React.useState(null);
+  const { postId } = useParams("postId");
+
+  // 날짜 가공
+  const formattedDate = new Date(postsDetail?.createdAt).toLocaleDateString(
+    "ko-KR",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+  );
+
+  useEffect(() => {
+    getTILDetail({ tilId: postId }).then((res) => setPostsDetail(res.data.til));
+  }, [postId]);
+
   return (
-    <div>
+    <>
       <Header />
       <PageContainer className="xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3">
-        <h1
-          className="text-5xl font-extrabold"
-          style={{ marginBottom: "2rem" }}
-        >
-          글제목 Lorem ipsum dolor sit amet.
+        <h1 className="text-5xl font-extrabold mb-8 mt-10 lg:mt-20">
+          {postsDetail?.title}
         </h1>
-        <InfoBar />
+        <InfoBar createdAt={formattedDate} />
         <div className="tagwrap">
-          <Button
-            variant="outlined"
-            color="success"
-            style={{ borderRadius: "1rem", margin: "1rem" }}
-          >
-            #DFS
-          </Button>
-          <Button
-            variant="outlined"
-            color="success"
-            style={{ borderRadius: "1rem" }}
-          >
-            #BFS
-          </Button>
+          {postsDetail?.site && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.site}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
+          {postsDetail?.language && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.language}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
+          {postsDetail?.algorithm && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.algorithm}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
         </div>
-        <div>
-          <span className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo at aut
-            dolor quidem quam iste impedit ipsa nihil consequuntur deserunt
-            eaque, quae ex minima saepe? Explicabo natus quibusdam debitis
-            consequatur. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Illo at aut dolor quidem quam iste impedit ipsa nihil
-            consequuntur deserunt eaque, quae ex minima saepe? Explicabo natus
-            quibusdam debitis consequatur.
-          </span>
-
-          <img
-            src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
-            alt=""
+        <div className="mt-10">
+          <MDEditor.Markdown
+            source={postsDetail?.content}
+            style={{ whiteSpace: "pre-wrap" }}
           />
         </div>
         <Footer />
-        <div className="flex items-center justify-center w-full">
+        <div className="flex items-center justify-center w-full my-10">
           <Pagination count={10} color="success" />
         </div>
       </PageContainer>
-    </div>
+    </>
   );
 };
 
