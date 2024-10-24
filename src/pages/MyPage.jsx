@@ -37,6 +37,15 @@ const MyPage = () => {
             ))}
         </div>
       )}
+      {selectedTab === "like" && (
+        <div className="flex flex-col gap-3">
+          {Array(9)
+            .fill(0)
+            .map((item) => (
+              <MyCard />
+            ))}
+        </div>
+      )}
       {selectedTab === "statistic" && (
         <div className="flex flex-col w-full gap-5 px-2">
           <div className="flex flex-row items-center w-full gap-3">

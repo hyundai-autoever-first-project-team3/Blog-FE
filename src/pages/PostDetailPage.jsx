@@ -22,7 +22,7 @@ const PostDetailPage = () => {
   }, [postId]);
 
   return (
-    <div>
+    <>
       <Header />
       <PageContainer className="xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3">
         <h1 className="text-5xl font-extrabold mb-8 mt-10 lg:mt-20">
@@ -60,7 +60,7 @@ const PostDetailPage = () => {
           <Pagination count={10} color="success" />
         </div>
       </PageContainer>
-    </div>
+    </>
   );
 };
 

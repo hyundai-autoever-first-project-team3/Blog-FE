@@ -10,9 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
   const [selectedTab, setSelectedTab] = useState("total");
-
   const [posts, setPosts] = React.useState(null);
-
   const navigate = useNavigate();
 
   const handleTabChange = (event, newValue) => {
@@ -27,35 +25,41 @@ const MainPage = () => {
     getTIL({ pageNumber: 0 }).then((res) => setPosts(res.data.content));
   }, []);
   return (
-    <PageContainer>
+    <>
       <Header />
-      <TabBar value={selectedTab} handleChange={handleTabChange} />
-      {selectedTab === "total" && (
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 px-2">
-          {posts?.map((item) => (
-            <Card
-              id={item.tilId}
-              title={item.title}
-              content={item.content}
-              thumbnail={item.thumbnail}
-              likeCount={item.likeCount}
-              createdAt={item.createdAt}
-              writerNickname={item.writerNickname}
-              onClick={() => navigate(`posts/${item.tilId}`)}
-            />
-          ))}
-        </div>
-      )}
-      {selectedTab === "challenge" && (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 px-2">
-          {Array(9)
-            .fill(0)
-            .map((item) => (
-              <ChallengeCard />
+      <PageContainer>
+        <TabBar value={selectedTab} handleChange={handleTabChange} />
+        {selectedTab === "total" && (
+          <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 px-2">
+            {posts?.map((item) => (
+              <Card
+                key={item.tilId}
+                id={item.tilId}
+                title={item.title}
+                content={item.content}
+                thumbnail={item.thumbnail}
+                likeCount={item.likeCount}
+                createdAt={item.createdAt}
+                writerNickname={item.writerNickname}
+                onClick={() => {
+                  console.log("dd");
+                  navigate(`/posts/${item.tilId}`);
+                }}
+              />
             ))}
-        </div>
-      )}
-    </PageContainer>
+          </div>
+        )}
+        {selectedTab === "challenge" && (
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 px-2">
+            {Array(9)
+              .fill(0)
+              .map((item, index) => (
+                <ChallengeCard key={index} />
+              ))}
+          </div>
+        )}
+      </PageContainer>
+    </>
   );
 };
 
