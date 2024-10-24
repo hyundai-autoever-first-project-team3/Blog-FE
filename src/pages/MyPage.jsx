@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageContainer from "../components/common/PageContainer";
 import ProfileSection from "../components/mypage/ProfileSection";
 import SubTabBar from "../components/mypage/SubTabBar";
@@ -16,13 +16,21 @@ import CountCard from "../components/mypage/CountCard";
 import { Button, Chip } from "@mui/material";
 import characterImg from "../images/main-character.png";
 import Header from "../components/common/Header";
+import { getLikeTILs, getMyTILs } from "../api/mypage";
 
 const MyPage = () => {
   const [selectedTab, setSelectedTab] = useState("write");
+  const [myPosts, setMyPosts] = useState([]);
+  const [likedPosts, setLikedPosts] = useState([]);
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
+
+  useEffect(() => {
+    getMyTILs({ pageSize: 0 }).then((res) => setMyPosts(res.data));
+    getLikeTILs({ pageSize: 0 }).then((res) => setLikedPosts(res.data));
+  }, []);
 
   return (
     <>
@@ -33,20 +41,30 @@ const MyPage = () => {
         <SubTabBar value={selectedTab} handleChange={handleChange} />
         {selectedTab === "write" && (
           <div className="flex flex-col gap-3">
-            {Array(9)
-              .fill(0)
-              .map((item) => (
-                <MyCard />
-              ))}
+            {myPosts.map((item) => (
+              <MyCard
+                id={item.tilId}
+                title={item.title}
+                content={item.content}
+                commentCount={item.commentCount}
+                likeCount={item.likeCount}
+                createdAt={item.createdAt}
+              />
+            ))}
           </div>
         )}
         {selectedTab === "like" && (
           <div className="flex flex-col gap-3">
-            {Array(9)
-              .fill(0)
-              .map((item) => (
-                <MyCard />
-              ))}
+            {likedPosts.map((item) => (
+              <MyCard
+                id={item.tilId}
+                title={item.title}
+                content={item.content}
+                commentCount={item.commentCount}
+                likeCount={item.likeCount}
+                createdAt={item.createdAt}
+              />
+            ))}
           </div>
         )}
         {selectedTab === "statistic" && (

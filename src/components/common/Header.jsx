@@ -30,14 +30,14 @@ const Header = () => {
     navigate(url);
   };
 
-  // const handleKakaoLogin = () => {
-  //   window.location.href =
-  //     "https://codingcare.site/api/oauth2/authorization/kakao";
-  // };
-  // const handleGithubLogin = () => {
-  //   window.location.href =
-  //     "https://codingcare.site/api/oauth2/authorization/github";
-  // };
+  const handleKakaoLogin = () => {
+    window.location.href =
+      "https://codingcare.site/api/oauth2/authorization/kakao";
+  };
+  const handleGithubLogin = () => {
+    window.location.href =
+      "https://codingcare.site/api/oauth2/authorization/github";
+  };
 
   // 로그인 모달
   const handleModalOpen = () => {
@@ -119,10 +119,16 @@ const Header = () => {
             <div className="text-xl font-semibold">로그인</div>
             <div className="text-lg mb-5">소셜 계정으로 로그인</div>
             <div className="flex flex-col gap-3">
-              <button className="bg-yellow-400 text-yellow-950 rounded-md py-3">
+              <button
+                className="bg-yellow-400 text-yellow-950 rounded-md py-3"
+                onClick={handleKakaoLogin}
+              >
                 카카오 계정으로 로그인
               </button>
-              <button className="bg-black text-white rounded-md py-3">
+              <button
+                className="bg-black text-white rounded-md py-3"
+                onClick={handleGithubLogin}
+              >
                 GitHub 계정으로 로그인
               </button>
             </div>
