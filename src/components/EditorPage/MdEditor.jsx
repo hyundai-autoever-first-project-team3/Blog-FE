@@ -35,7 +35,7 @@ function MdEditor() {
       const file = files[0];
       const reader = new FileReader();
       reader.onload = (e) => {
-        const imageUrl = e.target.result;
+        const imageUrl = URL.createObjectURL(file);
         setPostData((prev) => `${prev}\n![image](${imageUrl})`);
       };
       reader.readAsDataURL(file);
