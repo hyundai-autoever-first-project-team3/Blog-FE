@@ -167,8 +167,6 @@ const Setting = () => { // Setting 컴포넌트
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 /> 
-                {/* w-12 h-8 */}
-                {/* w-24 h-10  */}
                 <button
                   className="w-12 h-8 ml-2 text-xs font-light text-white duration-200 rounded-lg sm:w-16 sm:h-10 sm:text-base bg-sky-500 hover:bg-sky-300"
                   onClick={handleSaveEmailClick}

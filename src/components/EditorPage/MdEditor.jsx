@@ -48,7 +48,7 @@ function MdEditor() {
       <div className="flex flex-col w-full h-full sm:w-1/2">
         <PostTitle title={title} setTitle={setTitle} />
         <div className="flex px-1 m-3 space-x-2">
-          <Dropdown options={['백준', '프로그래머스', '민코딩']} placeholder="SITE" />
+          <Dropdown options={['백준', '프로그래머스','SWEA', '민코딩']} placeholder="SITE" />
           <Dropdown options={['C', 'JAVA', 'PYTHON']} placeholder="언어" />
           <Dropdown options={algorithmOptions} placeholder="알고리즘 유형" onChange={setAlgorithm} />
         </div>
@@ -76,4 +76,3 @@ function MdEditor() {
 }
 
 export default MdEditor;
-
