@@ -44,7 +44,7 @@ const MyPage = () => {
     <>
       <Header />
       <PageContainer>
-        <ProfileSection />
+        <ProfileSection nickName={data?.nickName} intro={data?.intro} />
         <hr />
         <SubTabBar value={selectedTab} handleChange={handleChange} />
         {selectedTab === "write" && (
