@@ -155,6 +155,12 @@ const Header = () => {
       >
         <MenuItem
           sx={{ paddingY: "12px" }}
+          onClick={() => handleMenuItemClick("/posts/write")}
+        >
+          새 글 작성
+        </MenuItem>
+        <MenuItem
+          sx={{ paddingY: "12px" }}
           onClick={() => handleMenuItemClick("/mypage")}
         >
           마이페이지
