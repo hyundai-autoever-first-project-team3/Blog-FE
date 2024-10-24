@@ -8,8 +8,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TabBar = ({ value, handleChange }) => {
-
-
   return (
     <div className="flex flex-row justify-start items-center py-3 px-2">
       <Box sx={{ width: "100%" }}>
@@ -53,7 +51,7 @@ const TabBar = ({ value, handleChange }) => {
               },
             }}
           />
-          <Tab
+          {/* <Tab
             value="community"
             label="커뮤니티"
             icon={<FontAwesomeIcon icon={faUsers} />}
@@ -67,7 +65,7 @@ const TabBar = ({ value, handleChange }) => {
                 fontWeight: 600,
               },
             }}
-          />
+          /> */}
         </Tabs>
       </Box>
     </div>
