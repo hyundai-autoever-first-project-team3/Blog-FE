@@ -83,7 +83,7 @@ const Setting = () => { // Setting 컴포넌트
           {isEditing ? (
             <>
               <input
-                className="w-1/2 p-1 m-2 mb-4 text-3xl font-bold text-white rounded-sm outline-none bg-sky-300"
+                className="w-1/2 p-1 m-2 mb-4 text-2xl font-bold text-white rounded-sm outline-none sm:text-3xl bg-sky-300"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -95,7 +95,7 @@ const Setting = () => { // Setting 컴포넌트
             </>
           ) : (
             <>
-              <span className="m-2 mb-4 text-4xl font-bold">{name}</span>
+              <span className="m-2 mb-4 text-2xl font-bold sm:text-4xl">{name}</span>
               <span className="ml-2 text-sm">{description}</span>
             </>
           )}
@@ -124,7 +124,7 @@ const Setting = () => { // Setting 컴포넌트
       <div>
         <div className="flex-col mb-4 border-b-2">
           <div className="flex items-center justify-between mb-2">
-            <span className="w-1/3 mr-4 text-3xl font-bold">내 코딩케어 제목</span>
+            <span className="w-1/3 mr-4 text-lg font-bold sm:text-3xl">내 코딩케어 제목</span>
             {isEditingTitle ? (
               <>
                 <input
@@ -133,7 +133,7 @@ const Setting = () => { // Setting 컴포넌트
                   onChange={(e) => setBlogTitle(e.target.value)}
                 />
                 <button
-                  className="px-4 py-2 ml-2 font-light text-white duration-200 rounded-lg bg-sky-500 hover:bg-sky-300"
+                  className="w-12 h-8 ml-2 text-xs font-light text-white duration-200 rounded-lg sm:w-16 sm:h-10 sm:text-base bg-sky-500 hover:bg-sky-300"
                   onClick={handleSaveTitleClick}
                 >
                   저장
@@ -153,22 +153,24 @@ const Setting = () => { // Setting 컴포넌트
               </>
             )}
           </div>
-          <span className="block mb-3 text-lg text-gray-500">
+          <span className="block mb-3 text-base text-gray-500 sm:text-lg">
             개인 페이지의 좌측 상단에 나타나는 페이지 제목입니다.
           </span>
         </div>
         <div className="flex-col mb-4 border-b-2">
           <div className="flex items-center justify-between mb-2">
-            <span className="w-1/3 mr-4 text-3xl font-bold ">이메일 주소</span>
+            <span className="w-1/3 mr-4 text-lg font-bold sm:text-3xl">이메일 주소</span>
             {isEditingEmail ? (
               <>
                 <input
                   className="flex-grow p-1 text-lg font-light duration-200 border border-gray-300 rounded hover:border-gray-500"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                />
+                /> 
+                {/* w-12 h-8 */}
+                {/* w-24 h-10  */}
                 <button
-                  className="px-4 py-2 ml-2 font-light text-white duration-200 rounded-lg bg-sky-500 hover:bg-sky-300"
+                  className="w-12 h-8 ml-2 text-xs font-light text-white duration-200 rounded-lg sm:w-16 sm:h-10 sm:text-base bg-sky-500 hover:bg-sky-300"
                   onClick={handleSaveEmailClick}
                 >
                   저장
@@ -188,24 +190,24 @@ const Setting = () => { // Setting 컴포넌트
               </>
             )}
           </div>
-          <span className="block mb-3 text-lg text-gray-500">
+          <span className="block mb-3 text-base text-gray-500 sm:text-lg">
             회원 인증 또는 시스템에서 발송하는 이메일을 수신하는 주소입니다.
           </span>
         </div>
         <div className="mb-4 border-b-2">
-          <span className="block mb-2 text-3xl font-bold">소셜 정보</span>
-          <span className="block mb-3 text-lg text-gray-500">
+          <span className="block mb-2 text-lg font-bold sm:text-3xl">소셜 정보</span>
+          <span className="block mb-3 text-base text-gray-500 sm:text-lg">
             가입 시 등록된 소셜 정보입니다.
           </span>
         </div>
         <div className="mb-4 border-b-2">
           <div className="flex items-center justify-start mb-2">
-            <span className="block pr-6 text-3xl font-bold">회원 탈퇴</span>
-            <button className="px-4 py-2 font-light text-white bg-red-500 rounded-lg hover:bg-red-700">
+            <span className="block pr-6 text-lg font-bold sm:text-3xl">회원 탈퇴</span>
+            <button className="px-4 py-2 text-xs font-light text-white bg-red-500 rounded-lg sm:text-base hover:bg-red-700">
               회원 탈퇴
             </button>
           </div>
-          <span className="block mb-3 text-lg font-light text-gray-500">
+          <span className="block mb-3 text-base text-gray-500 sm:text-lg">
             탈퇴 시 작성하신 포스트 및 댓글이 모두 삭제되며 복구되지 않습니다.
           </span>
         </div>
