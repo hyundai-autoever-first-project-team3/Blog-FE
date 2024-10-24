@@ -9,6 +9,7 @@ import { Tag } from "@mui/icons-material";
 import { setCookie } from "../api/cookie";
 import { getTILDetail } from "../api/main";
 import { useParams } from "react-router-dom";
+import MDEditor from "@uiw/react-md-editor/nohighlight";
 
 const PostDetailPage = () => {
   const [postsDetail, setPostsDetail] = React.useState(null);
@@ -66,12 +67,9 @@ const PostDetailPage = () => {
           )}
         </div>
         <div className="mt-10">
-          <span className="text-lg">{postsDetail?.content}</span>
-
-          <img
-            src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
-            // src="{postDetail?.img}"
-            alt=""
+          <MDEditor.Markdown
+            source={postsDetail?.content}
+            style={{ whiteSpace: "pre-wrap" }}
           />
         </div>
         <Footer />

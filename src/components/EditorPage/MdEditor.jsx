@@ -99,7 +99,7 @@ function MdEditor() {
       <div className="flex-col hidden w-1/2 h-full p-3 overflow-auto sm:flex bg-sky-50">
         <div className="preview-content">
           <MDEditor.Markdown
-            source={`# ${postData.title}\n${postData.content}`}
+            source={`# ${postData.title}${postData.content}`}
             style={{ whiteSpace: "pre-wrap" }}
           />
         </div>
