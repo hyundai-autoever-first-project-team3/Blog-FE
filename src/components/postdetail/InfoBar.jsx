@@ -2,16 +2,9 @@ import React from "react";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const InfoBar = ({
-  id,
-  createdAt,
-  updatedAt,
-  writerNickname,
-  likeCount = 0,
-  onClick,
-}) => {
+const InfoBar = ({ updatedAt, writerNickname, likeCount, onClick }) => {
   // 날짜 가공
-  const formattedDate = new Date(createdAt).toLocaleDateString("ko-KR", {
+  const formattedDate = new Date(updatedAt).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -22,9 +15,9 @@ const InfoBar = ({
       <div className="flex justify-between items-center">
         <div>
           <span className="font-bold" style={{ marginRight: "1rem" }}>
-            고채린
+            {writerNickname}
           </span>
-          <span>{createdAt}</span>
+          <span>{formattedDate}</span>
         </div>
         <div>
           {/* 로그인 여부에 따라 버튼 노출 달라짐 */}
@@ -33,12 +26,13 @@ const InfoBar = ({
             <Button variant="outlined">수정</Button>
           </div>
           <Button
+            size="medium"
             variant="outlined"
             color="#eee"
             startIcon={<FavoriteIcon sx={{ color: "#F20789" }} />}
             sx={{ borderRadius: "1rem" }}
           >
-            101
+            {likeCount}
           </Button>
         </div>
       </div>
