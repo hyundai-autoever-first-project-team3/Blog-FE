@@ -19,14 +19,8 @@ const Dropdown = ({ name = null, value, options, placeholder, onChange }) => {
           </option>
         ))}
       </select>
-      <div className="absolute inset-y-0 flex items-center px-2 pointer-events-none right-1">
-        <ReactSVG
-          src={Arrowdown}
-          beforeInjection={(svg) => {
-            svg.classList.add("text-gray-700");
-            svg.setAttribute("style", "fill: currentColor");
-          }}
-        />
+      <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+        <ReactSVG src={Arrowdown} />
       </div>
     </div>
   );
