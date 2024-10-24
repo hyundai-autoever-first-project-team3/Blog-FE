@@ -6,21 +6,27 @@ import MDEditor from "@uiw/react-md-editor/nohighlight";
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import "../../styles/Editor.css";
-import { getAlgorithms } from "../../api/detail";
+import { getAlgorithms, postTIL } from "../../api/detail";
+import { useNavigate } from "react-router-dom";
 
 function MdEditor() {
+  const navigate = useNavigate();
   const [postData, setPostData] = useState({
-    language: "언어",
-    site: "사이트",
-    algorithmId: 1,
-    title: "제목",
-    tag: "태그",
-    link: "링크",
-    codeContent: "코드",
-    content: "내용",
+    language: "",
+    site: "",
+    algorithmId: null,
+    title: "",
+    tag: "",
+    link: "",
+    codeContent: "",
+    content: "",
   });
   const [algorithmOptions, setAlgorithmOptions] = useState([]);
   const algorithmNames = algorithmOptions.map((item) => item.korClassification);
+
+  const handlePostData = () => {
+    postTIL(postData).then((res) => navigate(`/posts/${res.data.id}`));
+  };
 
   const handleDrop = async (event) => {
     event.preventDefault();
@@ -57,7 +63,7 @@ function MdEditor() {
             name="site"
             value={postData?.site}
             options={["백준", "Programmers", "SWEA", "민코딩"]}
-            placeholder="SITE"
+            placeholder="사이트"
             onChange={(e) => setPostData({ ...postData, site: e.target.value })}
           />
           <Dropdown
@@ -88,7 +94,7 @@ function MdEditor() {
             placeholder: "내용을 입력하세요.",
           }}
         />
-        <EditerFooter />
+        <EditerFooter handlePostData={handlePostData} />
       </div>
       <div className="flex-col hidden w-1/2 h-full p-3 overflow-auto sm:flex bg-sky-50">
         <div className="preview-content">
