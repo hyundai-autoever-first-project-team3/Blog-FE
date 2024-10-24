@@ -19,10 +19,10 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    // setCookie(
-    //   "accessToken",
-    //   "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb2NpYWwiOiJnaXRodWIiLCJlbWFpbCI6InBqbTI1NzFAY29kaW5nY2FyZS5zaXRlIiwicHJvZmlsZUltYWdlIjoiaHR0cHM6Ly9hdmF0YXJzLmdpdGh1YnVzZXJjb250ZW50LmNvbS91Lzk3OTM5MjA3P3Y9NCIsInJvbGUiOiJNRU1CRVIiLCJuYW1lIjoicGptMjU3MSIsImlhdCI6MTcyOTc1MDc0NCwiZXhwIjoxNzI5Nzg2NzQ0fQ.eeH_NF5e1602oFiyivKFPnokdFRerLvpmqfafgNK1i8"
-    // );
+    setCookie(
+      "accessToken",
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzb2NpYWwiOiJrYWthbyIsImVtYWlsIjoieW1qMDcxNjhAbmF2ZXIuY29tIiwicHJvZmlsZUltYWdlIjoiaHR0cDovL2sua2FrYW9jZG4ubmV0L2RuL2RmQVd6Zy9idHNKbjdtWWZmby9jN2FncWtvY1lONDVmN3hIQjIxc3ZLL2ltZ182NDB4NjQwLmpwZyIsInJvbGUiOiJNRU1CRVIiLCJuYW1lIjoi7J207Zqo7JuQIiwiaWF0IjoxNzI5NzUxMDg1LCJleHAiOjE3Mjk3ODcwODV9.hvJm84rtzssOWMjVbF3SCjH4rkFRqCIVikIxQc_36_s"
+    );
     getTIL({ pageNumber: 0 }).then((res) => setPosts(res.data.content));
     getChallenges({ pageSize: 0 }).then((res) =>
       setChallenges(res.data.content)

@@ -1,4 +1,7 @@
 import client from "./client";
+import { getCookie } from "./cookie";
+
+const token = getCookie('accessToken');
 
 // TIL 글 상세 조회
 export const getTILDetail = async ({ tilId }) => {
@@ -8,7 +11,16 @@ export const getTILDetail = async ({ tilId }) => {
 
 // TIL 글 작성 조회
 export const postTIL = async (tilData) => {
-  return await client.post(`/api/til`, tilData);
+  return await client.post(`/api/til`, tilData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+// TIL 글 알고리즘 조회
+export const getAlgorithms = async () => {
+  return await client.get(`/api/algorithms`);
 };
 
 // TIL 글 수정 조회
