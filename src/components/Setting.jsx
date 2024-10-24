@@ -133,7 +133,7 @@ const Setting = () => { // Setting 컴포넌트
                   onChange={(e) => setBlogTitle(e.target.value)}
                 />
                 <button
-                  className="px-4 py-2 ml-2 font-light text-white duration-200 rounded-lg bg-sky-500 hover:bg-sky-300"
+                  className="w-12 h-8 ml-2 text-xs font-light text-white duration-200 rounded-lg sm:w-16 sm:h-10 sm:text-base bg-sky-500 hover:bg-sky-300"
                   onClick={handleSaveTitleClick}
                 >
                   저장
@@ -166,9 +166,11 @@ const Setting = () => { // Setting 컴포넌트
                   className="flex-grow p-1 text-lg font-light duration-200 border border-gray-300 rounded hover:border-gray-500"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                />
+                /> 
+                {/* w-12 h-8 */}
+                {/* w-24 h-10  */}
                 <button
-                  className="px-4 py-2 ml-2 font-light text-white duration-200 rounded-lg bg-sky-500 hover:bg-sky-300"
+                  className="w-12 h-8 ml-2 text-xs font-light text-white duration-200 rounded-lg sm:w-16 sm:h-10 sm:text-base bg-sky-500 hover:bg-sky-300"
                   onClick={handleSaveEmailClick}
                 >
                   저장
