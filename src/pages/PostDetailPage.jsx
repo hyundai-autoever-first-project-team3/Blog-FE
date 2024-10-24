@@ -8,11 +8,14 @@ import Footer from "../components/postdetail/Footer";
 import { Tag } from "@mui/icons-material";
 import { setCookie } from "../api/cookie";
 import { getTILDetail } from "../api/main";
+import { getLikeCount, getlikeCount } from "../api/postdetail";
 import { useParams } from "react-router-dom";
+import PostComment from "../components/postdetail/PostComment";
 import MDEditor from "@uiw/react-md-editor/nohighlight";
 
 const PostDetailPage = () => {
   const [postsDetail, setPostsDetail] = React.useState(null);
+
   const { postId } = useParams("postId");
 
   // 날짜 가공
@@ -26,7 +29,7 @@ const PostDetailPage = () => {
   );
 
   useEffect(() => {
-    getTILDetail({ tilId: postId }).then((res) => setPostsDetail(res.data.til));
+    getTILDetail({ tilId: postId }).then((res) => setPostsDetail(res.data));
   }, [postId]);
 
   return (
@@ -34,9 +37,13 @@ const PostDetailPage = () => {
       <Header />
       <PageContainer className="xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3">
         <h1 className="text-5xl font-extrabold mb-8 mt-10 lg:mt-20">
-          {postsDetail?.title}
+          {postsDetail?.til.title}
         </h1>
-        <InfoBar createdAt={formattedDate} />
+        <InfoBar
+          updatedAt={postsDetail?.til.updatedAt}
+          likeCount={postsDetail?.likeCounts}
+          writerNickname={postsDetail?.memberWriterDto.nickname}
+        />
         <div className="tagwrap">
           {postsDetail?.site && (
             <Chip
@@ -72,9 +79,20 @@ const PostDetailPage = () => {
             style={{ whiteSpace: "pre-wrap" }}
           />
         </div>
-        <Footer />
+        <Footer
+          nickname={postsDetail?.memberWriterDto.nickname}
+          intro={postsDetail?.memberWriterDto.intro}
+          profileImage={postsDetail?.memberWriterDto.profileImage}
+        />
         <div className="flex items-center justify-center w-full my-10">
           <Pagination count={10} color="success" />
+        </div>
+        <div className="mt-12">
+          <PostComment />
+          <PostComment />
+          <PostComment />
+          <PostComment />
+          <PostComment />
         </div>
       </PageContainer>
     </>
