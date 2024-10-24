@@ -28,8 +28,8 @@ const MyPage = () => {
   };
 
   useEffect(() => {
-    getMyTILs({ pageSize: 0 }).then((res) => setMyPosts(res.data));
-    getLikeTILs({ pageSize: 0 }).then((res) => setLikedPosts(res.data));
+    getMyTILs({ pageSize: 0 }).then((res) => setMyPosts(res.data.content));
+    getLikeTILs({ pageSize: 0 }).then((res) => setLikedPosts(res.data.content));
   }, []);
 
   return (
