@@ -10,6 +10,7 @@ import { setCookie } from "../api/cookie";
 import { getTILDetail } from "../api/main";
 import { getLikeCount, getlikeCount } from "../api/postdetail";
 import { useParams } from "react-router-dom";
+import PostComment from "../components/postdetail/PostComment";
 
 const PostDetailPage = () => {
   const [token, setToken] = React.useState("");
@@ -67,6 +68,8 @@ const PostDetailPage = () => {
           <Pagination count={10} color="success" />
         </div>
       </PageContainer>
+
+      <PostComment />
     </>
   );
 };
