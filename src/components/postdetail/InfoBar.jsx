@@ -3,16 +3,21 @@ import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuth } from "../../hooks/useAuth";
 
-
 const InfoBar = ({
-  id,
-  createdAt,
+  writerId,
+  userId,
   updatedAt,
   writerNickname,
   likeCount = 0,
-  onClick,
-  thumbnailImage,
 }) => {
+  const formattedDate = new Date(updatedAt).toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  const { isLoggedIn } = useAuth();
+  const isEqual = writerId === userId;
 
   return (
     <div>
@@ -25,19 +30,23 @@ const InfoBar = ({
         </div>
         <div>
           {/* 로그인 여부에 따라 버튼 노출 달라짐 */}
-          <div className="flex">
-            <Button variant="outlined">삭제</Button>
-            <Button variant="outlined">수정</Button>
-          </div>
-          <Button
-            size="medium"
-            variant="outlined"
-            color="#eee"
-            startIcon={<FavoriteIcon sx={{ color: "#F20789" }} />}
-            sx={{ borderRadius: "1rem" }}
-          >
-            {likeCount}
-          </Button>
+          {isLoggedIn && isEqual ? (
+            <div className="flex">
+              <Button variant="outlined">삭제</Button>
+              <Button variant="outlined">수정</Button>
+            </div>
+          ) : (
+            <Button
+              size="medium"
+              variant="outlined"
+              color="#eee"
+              startIcon={<FavoriteIcon sx={{ color: "#F20789" }} />}
+              sx={{ borderRadius: "1rem" }}
+              disabled={!isLoggedIn}
+            >
+              {likeCount}
+            </Button>
+          )}
         </div>
       </div>
     </div>

@@ -45,6 +45,7 @@ const MainPage = () => {
                 likeCount={item.likeCount}
                 createdAt={item.createdAt}
                 writerNickname={item.writerNickname}
+                writerProfile={item.writerProfileImage}
                 onClick={() => {
                   console.log("dd");
                   navigate(`/posts/${item.tilId}`);
@@ -59,7 +60,7 @@ const MainPage = () => {
               <ChallengeCard
                 key={item.id}
                 algorithm={item.algorithm}
-                viewCount={item.viewCount}
+                viewCount={item.views}
                 createdAt={item.createdAt}
               />
             ))}

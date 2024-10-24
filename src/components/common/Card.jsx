@@ -11,6 +11,7 @@ const Card = ({
   writerNickname,
   likeCount = 0,
   onClick,
+  writerProfile,
 }) => {
   // 날짜 가공
   const formattedDate = new Date(createdAt).toLocaleDateString("ko-KR", {
@@ -42,7 +43,7 @@ const Card = ({
       <div className="flex flex-row justify-between items-center py-2 px-2">
         <div className="flex flex-row gap-2 items-center">
           <img
-            src="https://avatars.githubusercontent.com/u/89841486?v=4"
+            src={writerProfile}
             alt="profile"
             className="w-8 h-8 rounded-full object-contain"
           />

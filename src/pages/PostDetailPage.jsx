@@ -40,6 +40,8 @@ const PostDetailPage = () => {
           {postsDetail?.til.title}
         </h1>
         <InfoBar
+          userId={postsDetail?.memberWriterDto.id}
+          writerId={postsDetail?.til.memberId}
           updatedAt={postsDetail?.til.updatedAt}
           likeCount={postsDetail?.likeCounts}
           writerNickname={postsDetail?.memberWriterDto.nickname}
