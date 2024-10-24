@@ -55,7 +55,9 @@ const Header = () => {
   return (
     <>
       <div className="flex flex-row justify-between items-center py-3 px-2 shadow-sm">
-        <div className="text-2xl font-extrabold">CodingCare</div>
+        <div className="text-2xl font-extrabold" onClick={() => navigate("/")}>
+          CodingCare
+        </div>
         <div className="flex flex-row gap-3 items-center">
           <IconButton aria-label="alarm">
             <FontAwesomeIcon icon={faBell} />
