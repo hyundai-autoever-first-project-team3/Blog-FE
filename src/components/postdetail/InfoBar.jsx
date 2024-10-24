@@ -9,20 +9,15 @@ const InfoBar = ({
   writerNickname,
   likeCount = 0,
   onClick,
+  thumbnailImage,
 }) => {
-  // 날짜 가공
-  const formattedDate = new Date(createdAt).toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 
   return (
     <div>
       <div className="flex justify-between items-center">
         <div>
           <span className="font-bold" style={{ marginRight: "1rem" }}>
-            고채린
+            {}
           </span>
           <span>{createdAt}</span>
         </div>

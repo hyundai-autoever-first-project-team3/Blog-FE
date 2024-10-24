@@ -33,12 +33,11 @@ function MdEditor() {
     const files = event.dataTransfer.files;
     if (files.length > 0) {
       const file = files[0];
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const imageUrl = e.target.result;
-        setPostData((prev) => `${prev}\n![image](${imageUrl})`);
-      };
-      reader.readAsDataURL(file);
+      const imageUrl = URL.createObjectURL(file);
+      setPostData((prev) => ({
+        ...prev,
+        content: `${prev.content}\n![image](${imageUrl})`,
+      }));
     }
   };
 
@@ -99,7 +98,7 @@ function MdEditor() {
       <div className="flex-col hidden w-1/2 h-full p-3 overflow-auto sm:flex bg-sky-50">
         <div className="preview-content">
           <MDEditor.Markdown
-            source={`# ${postData.title}${postData.content}`}
+            source={`# ${postData.title}\n${postData.content}`}
             style={{ whiteSpace: "pre-wrap" }}
           />
         </div>

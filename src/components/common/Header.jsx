@@ -54,43 +54,48 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center py-3 px-2 shadow-sm">
-        <div className="text-2xl font-extrabold" onClick={() => navigate("/")}>
-          CodingCare
-        </div>
-        <div className="flex flex-row gap-3 items-center">
-          <IconButton aria-label="alarm">
-            <FontAwesomeIcon icon={faBell} />
-          </IconButton>
-          <IconButton aria-label="search">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </IconButton>
-          {isLoggedIn ? (
-            <div className="flex flex-row items-center gap-1">
-              <img
-                src="https://velog.velcdn.com/images/jhbae0420/post/fde34804-5927-4b81-a621-5b125c945aed/image.png"
-                alt="profile"
-                className="w-10 h-10 object-cover rounded-full"
-              />
-              <IconButton
-                onClick={handleMenuClick}
-                size="small"
-                aria-controls={menuOpen ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={menuOpen ? "true" : undefined}
+      <div className="flex flex-row justify-between items-center shadow-sm p-3">
+        <div className="w-full max-w-[1400px] m-auto flex flex-row justify-between">
+          <div
+            className="text-2xl font-extrabold"
+            onClick={() => navigate("/")}
+          >
+            CodingCare
+          </div>
+          <div className="flex flex-row gap-3 items-center">
+            <IconButton aria-label="alarm">
+              <FontAwesomeIcon icon={faBell} />
+            </IconButton>
+            <IconButton aria-label="search">
+              <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </IconButton>
+            {isLoggedIn ? (
+              <div className="flex flex-row items-center gap-1">
+                <img
+                  src="https://velog.velcdn.com/images/jhbae0420/post/fde34804-5927-4b81-a621-5b125c945aed/image.png"
+                  alt="profile"
+                  className="w-10 h-10 object-cover rounded-full"
+                />
+                <IconButton
+                  onClick={handleMenuClick}
+                  size="small"
+                  aria-controls={menuOpen ? "account-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={menuOpen ? "true" : undefined}
+                >
+                  <FontAwesomeIcon icon={faCaretDown} />
+                </IconButton>
+              </div>
+            ) : (
+              <Button
+                variant="contained"
+                sx={{ color: "white", backgroundColor: "black" }}
+                onClick={handleModalOpen}
               >
-                <FontAwesomeIcon icon={faCaretDown} />
-              </IconButton>
-            </div>
-          ) : (
-            <Button
-              variant="contained"
-              sx={{ color: "white", backgroundColor: "black" }}
-              onClick={handleModalOpen}
-            >
-              로그인
-            </Button>
-          )}
+                로그인
+              </Button>
+            )}
+          </div>
         </div>
       </div>
       <Modal open={modal} onClose={handleModalClose}>
