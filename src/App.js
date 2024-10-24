@@ -1,9 +1,14 @@
-import './App.css';
-import Routers from './Routers';
+import "./App.css";
+import Routers from "./Routers";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-      <Routers/>
+    <QueryClientProvider client={queryClient}>
+      <Routers />
+    </QueryClientProvider>
   );
 }
 

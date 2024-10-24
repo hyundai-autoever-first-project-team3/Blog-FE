@@ -9,7 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { removeCookie } from "../../api/cookie";
+import { getCookie, removeCookie } from "../../api/cookie";
+import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 
 const Header = () => {
   const { isLoggedIn } = useAuth();
@@ -17,6 +18,7 @@ const Header = () => {
   const [modal, setModal] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const menuOpen = Boolean(anchorEl);
+  const { data, refetch } = useGetUserInfo(getCookie("accessToken"));
 
   // 프로필 메뉴 클릭
   const handleMenuClick = (event) => {
@@ -50,6 +52,7 @@ const Header = () => {
     handleMenuClose();
     removeCookie("accessToken");
     navigate("/");
+    refetch();
   };
 
   return (
@@ -69,10 +72,10 @@ const Header = () => {
             <IconButton aria-label="search">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </IconButton>
-            {isLoggedIn ? (
+            {data ? (
               <div className="flex flex-row items-center gap-1">
                 <img
-                  src="https://velog.velcdn.com/images/jhbae0420/post/fde34804-5927-4b81-a621-5b125c945aed/image.png"
+                  src={data?.profileImage}
                   alt="profile"
                   className="w-10 h-10 object-cover rounded-full"
                 />
