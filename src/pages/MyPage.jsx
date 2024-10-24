@@ -17,8 +17,10 @@ import { Button, Chip } from "@mui/material";
 import characterImg from "../images/main-character.png";
 import Header from "../components/common/Header";
 import { getLikeTILs, getMyTILs } from "../api/mypage";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
+  const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState("write");
   const [myPosts, setMyPosts] = useState([]);
   const [likedPosts, setLikedPosts] = useState([]);
@@ -49,6 +51,7 @@ const MyPage = () => {
                 commentCount={item.commentCount}
                 likeCount={item.likeCount}
                 createdAt={item.createdAt}
+                onClick={() => navigate(`/posts/${item.tilId}`)}
               />
             ))}
           </div>
@@ -63,6 +66,7 @@ const MyPage = () => {
                 commentCount={item.commentCount}
                 likeCount={item.likeCount}
                 createdAt={item.createdAt}
+                onClick={() => navigate(`/posts/${item.tilId}`)}
               />
             ))}
           </div>

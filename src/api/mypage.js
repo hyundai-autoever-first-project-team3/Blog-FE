@@ -20,3 +20,12 @@ export const getLikeTILs = async ({ pageSize }) => {
     },
   });
 };
+
+// 통계 조회
+export const getStatistics = async ({ pageSize }) => {
+  return await client.get(`/api/mypage/statistics`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

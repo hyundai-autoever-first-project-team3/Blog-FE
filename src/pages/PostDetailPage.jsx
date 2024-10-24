@@ -11,11 +11,18 @@ import { getTILDetail } from "../api/main";
 import { useParams } from "react-router-dom";
 
 const PostDetailPage = () => {
-  const [token, setToken] = React.useState("");
   const [postsDetail, setPostsDetail] = React.useState(null);
   const { postId } = useParams("postId");
 
-  console.log(postsDetail);
+  // 날짜 가공
+  const formattedDate = new Date(postsDetail?.createdAt).toLocaleDateString(
+    "ko-KR",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+  );
 
   useEffect(() => {
     getTILDetail({ tilId: postId }).then((res) => setPostsDetail(res.data.til));
@@ -28,23 +35,35 @@ const PostDetailPage = () => {
         <h1 className="text-5xl font-extrabold mb-8 mt-10 lg:mt-20">
           {postsDetail?.title}
         </h1>
-        <InfoBar createdAt={postsDetail?.createdAt} />
+        <InfoBar createdAt={formattedDate} />
         <div className="tagwrap">
-          <Chip
-            icon={<Tag />}
-            // label="DFS"
-            label={postsDetail?.tag}
-            variant="outlined"
-            color="success"
-            className="m-1 my-2"
-          />
-          <Chip
-            icon={<Tag />}
-            label="BFS"
-            variant="outlined"
-            color="success"
-            className="m-1 my-2"
-          />
+          {postsDetail?.site && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.site}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
+          {postsDetail?.language && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.language}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
+          {postsDetail?.algorithm && (
+            <Chip
+              icon={<Tag />}
+              label={postsDetail?.algorithm}
+              variant="outlined"
+              color="success"
+              className="m-1 my-2"
+            />
+          )}
         </div>
         <div className="mt-10">
           <span className="text-lg">{postsDetail?.content}</span>
