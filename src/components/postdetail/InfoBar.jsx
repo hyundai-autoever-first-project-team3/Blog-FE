@@ -2,14 +2,20 @@ import React from "react";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuth } from "../../hooks/useAuth";
+import { useGetUserInfo } from "../../hooks/useGetUserInfo";
+import { getCookie } from "../../api/cookie";
+import { deleteTIL } from "../../api/detail";
+import { useNavigate } from "react-router-dom";
 
 const InfoBar = ({
-  writerId,
-  userId,
+  tilId,
+  isOwner,
   updatedAt,
   writerNickname,
   likeCount = 0,
 }) => {
+  const navigate = useNavigate();
+  const { data } = useGetUserInfo(getCookie("accessToken"));
   const formattedDate = new Date(updatedAt).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
@@ -17,7 +23,16 @@ const InfoBar = ({
   });
 
   const { isLoggedIn } = useAuth();
-  const isEqual = writerId === userId;
+
+  const handleDeletePost = () => {
+    deleteTIL({ tilId: tilId }).then((res) => {
+      navigate("/");
+    });
+  };
+
+  const handlePatchPost = () => {
+    navigate(`/posts/${tilId}`);
+  };
 
   return (
     <div>
@@ -30,10 +45,14 @@ const InfoBar = ({
         </div>
         <div>
           {/* 로그인 여부에 따라 버튼 노출 달라짐 */}
-          {isLoggedIn && isEqual ? (
+          {isOwner ? (
             <div className="flex">
-              <Button variant="outlined">삭제</Button>
-              <Button variant="outlined">수정</Button>
+              <Button variant="outlined" onClick={handleDeletePost}>
+                삭제
+              </Button>
+              <Button variant="outlined" onClick={handlePatchPost}>
+                수정
+              </Button>
             </div>
           ) : (
             <Button

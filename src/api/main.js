@@ -28,3 +28,12 @@ export const getTILDetail = async ({ tilId }) => {
 export const getChallengeDetail = async ({ challengeId }) => {
   return await client.get(`/api/challenges/${challengeId}`);
 };
+
+// 유저 정보 조회
+export const getUserInfo = async (userToken) => {
+  return await client.get(`/api/member`, {
+    headers: {
+      Authorization: `Bearer ${userToken}`,
+    },
+  });
+};

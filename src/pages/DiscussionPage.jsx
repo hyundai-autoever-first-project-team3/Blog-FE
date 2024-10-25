@@ -6,9 +6,9 @@ import { Comment } from "../components/challenge/Comment";
 
 const DiscussionPage = () => {
   return (
-    <div>
+    <>
+      <Header />
       <PageContainer className="xl:px-[150px] lg:px-[100px] md:px-50 sm:px-10">
-        <Header />
         <DiscussionHeader />
         <Comment />
         <Comment />
@@ -16,7 +16,7 @@ const DiscussionPage = () => {
         <Comment />
         <Comment />
       </PageContainer>
-    </div>
+    </>
   );
 };
 

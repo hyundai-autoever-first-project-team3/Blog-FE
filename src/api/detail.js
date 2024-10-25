@@ -1,7 +1,7 @@
 import client from "./client";
 import { getCookie } from "./cookie";
 
-const token = getCookie('accessToken');
+const token = getCookie("accessToken");
 
 // TIL 글 상세 조회
 export const getTILDetail = async ({ tilId }) => {
@@ -26,11 +26,32 @@ export const getAlgorithms = async () => {
 // TIL 글 수정 조회
 export const putTIL = async ({ tilId }) => {
   console.log(tilId);
-  return await client.put(`/api/tils/${tilId}`);
+  return await client.put(`/api/tils/${tilId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
 
 // TIL 글 삭제 조회
 export const deleteTIL = async ({ tilId }) => {
   console.log(tilId);
-  return await client.delete(`/api/tils/${tilId}`);
+  return await client.delete(`/api/tils/${tilId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+// 댓글 생성
+export const postComment = async ({ tilId, content }) => {
+  return await client.post(
+    `/api/comment`,
+    { tilId: tilId, content: content },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 };
