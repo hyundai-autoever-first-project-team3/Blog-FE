@@ -12,16 +12,30 @@ import { useParams } from "react-router-dom";
 import PostComment from "../components/postdetail/PostComment";
 import MDEditor from "@uiw/react-md-editor/nohighlight";
 import { Button, TextField } from "@mui/material";
+import { postComment } from "../api/detail";
+import { useGetTILDetail } from "../hooks/useGetTILDetail";
 
 const PostDetailPage = () => {
-  const [postsDetail, setPostsDetail] = React.useState(null);
+  // const [postsDetail, setPostsDetail] = React.useState(null);
   const [newComment, setNewComment] = React.useState("");
-
   const { postId } = useParams("postId");
+  const { data: postsDetail, refetch } = useGetTILDetail({ postId: postId });
 
+  console.log(newComment);
+  const handlePostComment = () => {
+    postComment({ tilId: postId, content: newComment }).then((res) => {
+      console.log(res);
+      refetch();
+      setNewComment("");
+    });
+  };
+
+  // postId가 변경될 때마다 데이터 갱신
   useEffect(() => {
-    getTILDetail({ tilId: postId }).then((res) => setPostsDetail(res.data));
-  }, [postId]);
+    if (postId) {
+      refetch();
+    }
+  }, [postId]); // postsDetail 의존성 제거
 
   return (
     <>
@@ -84,7 +98,7 @@ const PostDetailPage = () => {
         </div>
         <div className="flex flex-col w-full gap-2">
           <div className="text-2xl font-semibold self-start">
-            {postsDetail?.commentCounts}개의 댓글
+            {postsDetail?.commentCounts || 0}개의 댓글
           </div>
           <TextField
             value={newComment}
@@ -99,6 +113,7 @@ const PostDetailPage = () => {
             sx={{
               alignSelf: "end",
             }}
+            onClick={handlePostComment}
           >
             댓글 작성
           </Button>

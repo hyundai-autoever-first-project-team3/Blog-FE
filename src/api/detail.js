@@ -42,3 +42,16 @@ export const deleteTIL = async ({ tilId }) => {
     },
   });
 };
+
+// 댓글 생성
+export const postComment = async ({ tilId, content }) => {
+  return await client.post(
+    `/api/comment`,
+    { tilId: tilId, content: content },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
