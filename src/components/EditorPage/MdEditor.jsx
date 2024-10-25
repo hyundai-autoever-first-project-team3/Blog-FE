@@ -10,8 +10,11 @@ import { getAlgorithms, postTIL } from "../../api/detail";
 import { useNavigate } from "react-router-dom";
 import ThumbnailModal from "./ThumbnailModal";
 import { postImageUpload } from "../../api/write";
+import { data } from "autoprefixer";
 
 function MdEditor() {
+
+  console.log(data);
   const navigate = useNavigate();
   const [postData, setPostData] = useState({
     language: "",
@@ -37,14 +40,21 @@ function MdEditor() {
     const files = event.dataTransfer.files;
     if (files.length > 0) {
       const file = files[0];
-      const imageUrl = URL.createObjectURL(file);
-      setPostData((prev) => ({
-        ...prev,
-        content: `${prev.content}\n![image](${imageUrl})`,
-      }));
+      try {
+        const formData = new FormData();
+        formData.append("img", file);
+        const response = await postImageUpload(formData);
+        const imageUrl = response.data.uploadedUrl;
+        setPostData((prev) => ({
+          ...prev,
+          content: `${prev.content}\n![image](${imageUrl})`,
+        }));
+      } catch (error) {
+        console.error("Image upload failed:", error);
+      }
     }
   };
-
+  
   const handleModalSave = (thumbnail) => {
     postImageUpload({ img: thumbnail }).then((res) => {
       const addedPostData = {

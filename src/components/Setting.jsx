@@ -1,10 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import { TextField, Button, Avatar, Card, CardContent } from "@mui/material";
 import { useForm } from "react-hook-form";
 import PageContainer from "./common/PageContainer";
+import { useGetUserInfo } from "../hooks/useGetUserInfo";
+import { getCookie } from "../api/cookie";
 
 const Setting = () => {
-  // Setting 컴포넌트
+  const {data} = useGetUserInfo(getCookie('accessToken'));
   const [profileImage, setProfileImage] = useState("");
   const { register, handleSubmit } = useForm();
   const [blogTitle, setBlogTitle] = useState("야호의 코딩케어");
@@ -16,14 +18,23 @@ const Setting = () => {
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const fileInputRef = useRef(null);
 
+  useEffect(() => {
+    if (data) {
+      setProfileImage(data.profileImage);
+      setName(data.name);
+      setEmail(data.email);
+      setDescription(data.intro);
+    }
+  }, [data]);
+
   const handleImageUpload = (e) => {
-    // 이미지 업로드 핸들러 함수
+    console.log(data);
     const file = e.target.files[0];
     if (file) {
       setProfileImage(URL.createObjectURL(file));
     }
   };
-
+  
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
@@ -51,6 +62,8 @@ const Setting = () => {
   const handleSaveEmailClick = () => {
     setIsEditingEmail(false);
   };
+
+  
 
   return (
     <PageContainer className=" px-2 xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3 pt-8">
@@ -89,12 +102,12 @@ const Setting = () => {
           {isEditing ? (
             <>
               <input
-                className="w-1/2 p-1 mb-4 text-2xl font-bold text-black rounded border border-gray-300 hover:border-gray-500"
+                className="w-1/2 p-1 mb-4 text-2xl font-bold text-black border border-gray-300 rounded hover:border-gray-500"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
               <input
-                className="p-2 border border-gray-300 rounded w-full font-thin hover:border-gray-500"
+                className="w-full p-2 font-thin border border-gray-300 rounded hover:border-gray-500"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
