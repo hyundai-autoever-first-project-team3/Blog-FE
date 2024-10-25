@@ -52,7 +52,7 @@ const PostDetailPage = () => {
           liked={postsDetail?.liked}
         />
         <div className="tagwrap">
-          {postsDetail?.site && (
+          {postsDetail?.til.site && (
             <Chip
               icon={<Tag />}
               label={postsDetail?.til.site}
