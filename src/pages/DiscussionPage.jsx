@@ -13,18 +13,15 @@ const DiscussionPage = () => {
   
  
   useEffect(()=>{
-
-    setCookie(
-       "accessToken",
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiTUVNQkVSIiwicHJvZmlsZUltYWdlIjoiaHR0cDovL2sua2FrYW9jZG4ubmV0L2RuL29iT0dmL2J0c0pOZmxZb09XL0QxS2lzNU5ycTBkOExQWFliYjlHNzEvaW1nXzY0MHg2NDAuanBnIiwiZW1haWwiOiJnb2NoZWxpbkBuYXZlci5jb20iLCJzb2NpYWwiOiJrYWthbyIsIm5hbWUiOiLqs6DssYTrprAiLCJpYXQiOjE3Mjk4MjcwNDcsImV4cCI6MTcyOTg2MzA0N30.65ymYUDaknecqGFtACg0GUcurIEisjRFMvV944kxd6M"
-    );
     
     getProblemComments({problemId: problemId, challengeId:challengeId}).then((res)=>{
       setProblemInfo(res.data)
     })
-  },[problemInfo]);
+  },[problemId, challengeId]);
   
   console.log(problemInfo)
+  console.log(problemInfo.problemCommentsList?.content)
+  
 
   
   return (
@@ -32,13 +29,22 @@ const DiscussionPage = () => {
       
       <Header />
       <PageContainer className="xl:px-[150px] lg:px-[100px] md:px-50 sm:px-10">
-        <DiscussionHeader />
+        <DiscussionHeader 
+        problemTitle={problemInfo.problemTitle} 
+        siteKinds={problemInfo.siteKinds}
+        />
         
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
-        <Comment />
+        {problemInfo?.problemCommentsList?.content?.map((comment) => (
+          <Comment
+          key={comment.nickname}
+          nickname={comment.nickname} // 닉네임
+          profileImage={comment.profileImage} // 프로필 이미지
+          content={comment.content} // 댓글 내용
+          createdAt={comment.createdAt} // 작성 시간 (필요할 경우)
+        />)
+        )}
+        
+        
       </PageContainer>
     </>
   );

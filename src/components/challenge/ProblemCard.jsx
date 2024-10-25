@@ -3,11 +3,14 @@ import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ProblemCard = ({problemId,title, site, siteKinds, level}
 
   
 ) => {
+  const navigate = useNavigate();
+  const {challengeId} = useParams('challengeId');
   console.log(site)
   
   return (
@@ -38,6 +41,7 @@ const ProblemCard = ({problemId,title, site, siteKinds, level}
               variant="contained"
               color="success"
               style={{ borderRadius: "1rem" }}
+              onClick={() => navigate(`/challenges/${challengeId}/problems/${problemId}`)}
             >
               토론방
             </Button>
