@@ -26,10 +26,6 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    setCookie(
-      "accessToken",
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiTUVNQkVSIiwicHJvZmlsZUltYWdlIjoiaHR0cDovL2sua2FrYW9jZG4ubmV0L2RuL2RmQVd6Zy9idHNKbjdtWWZmby9jN2FncWtvY1lONDVmN3hIQjIxc3ZLL2ltZ182NDB4NjQwLmpwZyIsImVtYWlsIjoieW1qMDcxNjhAbmF2ZXIuY29tIiwic29jaWFsIjoia2FrYW8iLCJuYW1lIjoi7J207Zqo7JuQIiwiaWF0IjoxNzI5ODU3MDcwLCJleHAiOjE3Mjk4OTMwNzB9.uD3VVT-RnGA5Q2DKgQ0Lkq7KXV641LfSOO9v6oirW7w"
-    );
     getTIL({ pageNumber: pageNumber }).then((res) => setPostsData(res.data));
     getChallenges({ pageSize: 0 }).then((res) =>
       setChallenges(res.data.content)
