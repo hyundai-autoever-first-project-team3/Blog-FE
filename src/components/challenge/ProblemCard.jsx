@@ -4,7 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 
-const ProblemCard = ({problemId,title, site, siteKinds, level}) => {
+const ProblemCard = ({problemId,title, site, siteKinds, level}
+
+  
+) => {
+  console.log(site)
   
   return (
     <div className="relative flex min-h-30 justify-between h-full py-5 px-3 my-5 border-2 p-2 rounded-lg shadow-sm">
@@ -22,9 +26,11 @@ const ProblemCard = ({problemId,title, site, siteKinds, level}) => {
               variant="outlined"
               color="success"
               style={{ borderRadius: "1rem" }}
-              onClick={() => window.open("https://school.programmers.co.kr/learn/courses/30/lessons/43164", "_blank")}
->
+              
+              onClick={() => window.open(site)}
+              
             >
+            
               문제링크
             </Button>
             <Button
