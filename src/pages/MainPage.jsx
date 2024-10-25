@@ -6,7 +6,6 @@ import Card from "../components/common/Card";
 import ChallengeCard from "../components/challenge/ChallengeCard";
 import { getChallenges, getTIL } from "../api/main";
 import { useNavigate } from "react-router-dom";
-import { setCookie } from "../api/cookie";
 
 const MainPage = () => {
   const [selectedTab, setSelectedTab] = useState("total");
@@ -34,14 +33,14 @@ const MainPage = () => {
       <PageContainer>
         <TabBar value={selectedTab} handleChange={handleTabChange} />
         {selectedTab === "total" && (
-          <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3 px-2">
+          <div className="grid gap-3 px-2 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
             {posts?.map((item) => (
               <Card
                 key={item.tilId}
                 id={item.tilId}
                 title={item.title}
                 content={item.content}
-                thumbnail={item.thumbnail}
+                thumbnail={item.thumbnailImage}
                 likeCount={item.likeCount}
                 createdAt={item.createdAt}
                 writerNickname={item.writerNickname}
@@ -55,7 +54,7 @@ const MainPage = () => {
           </div>
         )}
         {selectedTab === "challenge" && (
-          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 px-2">
+          <div className="grid gap-2 px-2 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
             {challenges.map((item) => (
               <ChallengeCard
                 key={item.id}

@@ -2,10 +2,9 @@ import React from "react";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuth } from "../../hooks/useAuth";
-import { useGetUserInfo } from "../../hooks/useGetUserInfo";
-import { getCookie } from "../../api/cookie";
-import { deleteTIL } from "../../api/detail";
+import { deleteLike, deleteTIL, postLike } from "../../api/detail";
 import { useNavigate } from "react-router-dom";
+import { useGetTILDetail } from "../../hooks/useGetTILDetail";
 
 const InfoBar = ({
   tilId,
@@ -13,9 +12,12 @@ const InfoBar = ({
   updatedAt,
   writerNickname,
   likeCount = 0,
+  liked = false,
 }) => {
   const navigate = useNavigate();
   const { data } = useGetUserInfo(getCookie("accessToken"));
+  const { refetch } = useGetTILDetail({ postId: tilId });
+
   const formattedDate = new Date(updatedAt).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
@@ -23,6 +25,20 @@ const InfoBar = ({
   });
 
   const { isLoggedIn } = useAuth();
+  // const [likedCount, setLikedCount] = React.useState(likeCount);
+  // const [isLiked, setIsLiked] = React.useState(liked);
+
+  const handleLike = () => {
+    if (data?.liked) {
+      deleteLike({ tilId: tilId }).then((res) => {
+        refetch();
+      });
+    } else {
+      postLike({ tilId: tilId }).then((res) => {
+        refetch();
+      });
+    }
+  };
 
   const handleDeletePost = () => {
     deleteTIL({ tilId: tilId }).then((res) => {
@@ -33,6 +49,10 @@ const InfoBar = ({
   const handlePatchPost = () => {
     navigate(`/posts/${tilId}`);
   };
+
+  // useEffect(() => {
+  //   setIsLiked(liked);
+  // }, [isLiked]);
 
   return (
     <div>
@@ -58,12 +78,13 @@ const InfoBar = ({
             <Button
               size="medium"
               variant="outlined"
-              color="#eee"
+              color={data?.liked ? "#F20789" : "black"}
               startIcon={<FavoriteIcon sx={{ color: "#F20789" }} />}
               sx={{ borderRadius: "1rem" }}
               disabled={!isLoggedIn}
+              onClick={handleLike}
             >
-              {likeCount}
+              {data?.likeCounts}
             </Button>
           )}
         </div>

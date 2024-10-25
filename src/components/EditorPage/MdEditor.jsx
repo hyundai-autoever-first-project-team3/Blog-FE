@@ -8,6 +8,8 @@ import "@uiw/react-markdown-preview/markdown.css";
 import "../../styles/Editor.css";
 import { getAlgorithms, postTIL } from "../../api/detail";
 import { useNavigate } from "react-router-dom";
+import ThumbnailModal from "./ThumbnailModal";
+import { postImageUpload } from "../../api/write";
 
 function MdEditor() {
   const navigate = useNavigate();
@@ -24,8 +26,8 @@ function MdEditor() {
   const [algorithmOptions, setAlgorithmOptions] = useState([]);
   const algorithmNames = algorithmOptions.map((item) => item.korClassification);
 
-  const handlePostData = () => {
-    postTIL(postData).then((res) => navigate(`/posts/${res.data.id}`));
+  const handlePostData = (data) => {
+    postTIL(data).then((res) => navigate(`/posts/${res.data.id}`));
   };
 
   const handleDrop = async (event) => {
@@ -39,6 +41,17 @@ function MdEditor() {
         content: `${prev.content}\n![image](${imageUrl})`,
       }));
     }
+  };
+
+  const handleModalSave = (thumbnail) => {
+    postImageUpload({ img: thumbnail }).then((res) => {
+      const addedPostData = {
+        ...postData,
+        thumbnailImage: res.data.uploadedUrl,
+      };
+      handlePostData(addedPostData);
+      setIsModalOpen(false);
+    });
   };
 
   useEffect(() => {
