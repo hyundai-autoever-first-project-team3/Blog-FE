@@ -21,8 +21,8 @@ const ChallengePage = () => {
       setChallengeDetail(res.data)
   })},[challengeId]);
 
+
   
-  console.log(challengeDetail);
 
 
   return (
