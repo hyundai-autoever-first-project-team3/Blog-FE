@@ -10,6 +10,7 @@ import {
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { removeCookie } from "../../api/cookie";
+import { useMediaQuery } from '@mui/material';
 
 const Header = () => {
   const { isLoggedIn } = useAuth();
@@ -17,6 +18,7 @@ const Header = () => {
   const [modal, setModal] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const menuOpen = Boolean(anchorEl);
+  const isMobile = useMediaQuery('(max-width:550px)');
 
   // 프로필 메뉴 클릭
   const handleMenuClick = (event) => {
@@ -54,7 +56,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center shadow-sm p-3">
+      <div className="flex flex-row items-center justify-between p-3 shadow-sm">
         <div className="w-full max-w-[1400px] m-auto flex flex-row justify-between">
           <div
             className="text-2xl font-extrabold"
@@ -62,7 +64,7 @@ const Header = () => {
           >
             CodingCare
           </div>
-          <div className="flex flex-row gap-3 items-center">
+          <div className="flex flex-row items-center gap-3">
             <IconButton aria-label="alarm">
               <FontAwesomeIcon icon={faBell} />
             </IconButton>
@@ -74,7 +76,7 @@ const Header = () => {
                 <img
                   src="https://velog.velcdn.com/images/jhbae0420/post/fde34804-5927-4b81-a621-5b125c945aed/image.png"
                   alt="profile"
-                  className="w-10 h-10 object-cover rounded-full"
+                  className="object-cover w-10 h-10 rounded-full"
                 />
                 <IconButton
                   onClick={handleMenuClick}
@@ -105,7 +107,7 @@ const Header = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: 400,
+            width : isMobile ? '70%' : 400,
             bgcolor: "background.paper",
             boxShadow: 24,
             paddingY: 3,
@@ -122,16 +124,16 @@ const Header = () => {
           </IconButton>
           <div className="flex flex-col">
             <div className="text-xl font-semibold">로그인</div>
-            <div className="text-lg mb-5">소셜 계정으로 로그인</div>
+            <div className="mb-5 text-lg">소셜 계정으로 로그인</div>
             <div className="flex flex-col gap-3">
               <button
-                className="bg-yellow-400 text-yellow-950 rounded-md py-3"
+                className="py-3 bg-yellow-400 rounded-md text-yellow-950"
                 onClick={handleKakaoLogin}
               >
                 카카오 계정으로 로그인
               </button>
               <button
-                className="bg-black text-white rounded-md py-3"
+                className="py-3 text-white bg-black rounded-md"
                 onClick={handleGithubLogin}
               >
                 GitHub 계정으로 로그인

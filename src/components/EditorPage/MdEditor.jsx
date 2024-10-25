@@ -8,6 +8,7 @@ import "@uiw/react-markdown-preview/markdown.css";
 import "../../styles/Editor.css";
 import { getAlgorithms, postTIL } from "../../api/detail";
 import { useNavigate } from "react-router-dom";
+import ThumbnailModal from "./ThumbnailModal";
 
 function MdEditor() {
   const navigate = useNavigate();
@@ -20,8 +21,10 @@ function MdEditor() {
     link: "",
     codeContent: "",
     content: "",
+    thumbnail: "",
   });
   const [algorithmOptions, setAlgorithmOptions] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const algorithmNames = algorithmOptions.map((item) => item.korClassification);
 
   const handlePostData = () => {
@@ -39,6 +42,12 @@ function MdEditor() {
         content: `${prev.content}\n![image](${imageUrl})`,
       }));
     }
+  };
+
+  const handleModalSave = (thumbnail) => {
+    setPostData((prev) => ({ ...prev, thumbnail }));
+    setIsModalOpen(false);
+    handlePostData();
   };
 
   useEffect(() => {
@@ -93,7 +102,7 @@ function MdEditor() {
             placeholder: "내용을 입력하세요.",
           }}
         />
-        <EditerFooter handlePostData={handlePostData} />
+        <EditerFooter handlePostData={() => setIsModalOpen(true)} />
       </div>
       <div className="flex-col hidden w-1/2 h-full p-3 overflow-auto sm:flex bg-sky-50">
         <div className="preview-content">
@@ -103,6 +112,11 @@ function MdEditor() {
           />
         </div>
       </div>
+      <ThumbnailModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSave={handleModalSave}
+      />
     </div>
   );
 }
