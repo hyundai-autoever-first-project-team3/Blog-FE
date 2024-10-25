@@ -61,7 +61,7 @@ const PostDetailPage = () => {
               className="m-1 my-2"
             />
           )}
-          {postsDetail?.language && (
+          {postsDetail?.til.language && (
             <Chip
               icon={<Tag />}
               label={postsDetail?.til.language}
