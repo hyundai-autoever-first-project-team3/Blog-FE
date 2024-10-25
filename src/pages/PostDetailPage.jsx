@@ -106,10 +106,14 @@ const PostDetailPage = () => {
         <div className="mt-12">
           {postsDetail?.commentDetailDtos.map((item) => (
             <PostComment
-              id={postsDetail?.commentDetailDtos.id}
-              content={postsDetail?.commentDetailDtos.content}
-              nickName={postsDetail?.commentDetailDtos.writerNickname}
-              profile={postsDetail?.commentDetailDtos.writerProfileImage}
+              key={item.id} // Ensure each child has a unique key
+              id={item.id}
+              content={item.content}
+              createdAt={item.createdAt}
+              updatedAt={item.updatedAt}
+              writerId={item.writerId}
+              writerNickname={item.writerNickname}
+              writerProfileImage={item.writerProfileImage}
             />
           ))}
         </div>
