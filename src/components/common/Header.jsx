@@ -9,7 +9,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { removeCookie } from "../../api/cookie";
 import { useMediaQuery } from '@mui/material';
 import { getCookie, removeCookie } from "../../api/cookie";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
