@@ -81,7 +81,7 @@ const PostDetailPage = () => {
             />
           )}
         </div>
-        <div className="mt-10">
+        <div className="mt-10" data-color-mode="light">
           <MDEditor.Markdown
             source={postsDetail?.til.content}
             style={{ whiteSpace: "pre-wrap" }}
