@@ -1,7 +1,11 @@
 import React from "react";
-import { Button } from "@mui/material";
 
-export const Comment = () => {
+export const Comment = ({ nickname, content, createdAt, profileImage }) => {
+  const formattedDate = new Date(createdAt).toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   return (
     <div>
       <div className="flex flex-row items-center my-2">
@@ -11,13 +15,10 @@ export const Comment = () => {
           alt=""
         />
         <div className="flex flex-col px-4">
-          <div className="text-xl font-bold mx-1">
-            이거 어떻게 풀어요? 힌트 주세요
-          </div>
+          <div className="text-xl font-bold mx-1">{content}</div>
           <div flex flex-row>
-            <span className="text-lg mx-1 mr-10">고채린</span>
-            <span className="text-lg mx-3 mr-10 ">2024-10-20</span>
-            <span className="text-lg mx-3 mr-10">댓글 10</span>
+            <span className="text-lg mx-1 mr-10">{nickname}</span>
+            <span className="text-lg mx-3 mr-10 ">{formattedDate}</span>
           </div>
         </div>
       </div>

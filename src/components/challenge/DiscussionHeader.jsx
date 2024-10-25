@@ -13,12 +13,12 @@ export const DiscussionHeader = () => {
   };
   return (
     <div>
-      <Button
+      {/* <Button
         variant="contained"
         sx={{ color: "white", backgroundColor: "black" }}
       >
         챌린지로 돌아가기
-      </Button>
+      </Button> */}
 
       <div className="my-2">
         <span className="text-lg mx-4 mr-10">백준</span>
