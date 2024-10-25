@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Header from "../components/common/Header";
 import InfoBar from "../components/postdetail/InfoBar";
 import PageContainer from "../components/common/PageContainer";
-import Pagination from "@mui/material/Pagination";
 import Chip from "@mui/material/Chip";
 import Footer from "../components/postdetail/Footer";
 import { Tag } from "@mui/icons-material";
@@ -10,7 +9,6 @@ import { useParams } from "react-router-dom";
 import PostComment from "../components/postdetail/PostComment";
 import MDEditor from "@uiw/react-md-editor/nohighlight";
 import { Button, TextField } from "@mui/material";
-import { getTILDetail } from "../api/main";
 import { useGetTILDetail } from "../hooks/useGetTILDetail";
 import { postComment } from "../api/detail";
 
