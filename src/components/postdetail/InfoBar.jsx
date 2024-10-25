@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuth } from "../../hooks/useAuth";
@@ -6,17 +6,9 @@ import { deleteLike, deleteTIL, postLike } from "../../api/detail";
 import { useNavigate } from "react-router-dom";
 import { useGetTILDetail } from "../../hooks/useGetTILDetail";
 
-const InfoBar = ({
-  tilId,
-  isOwner,
-  updatedAt,
-  writerNickname,
-  likeCount = 0,
-  liked = false,
-}) => {
+const InfoBar = ({ tilId, isOwner, updatedAt, writerNickname }) => {
   const navigate = useNavigate();
-  const { data } = useGetUserInfo(getCookie("accessToken"));
-  const { refetch } = useGetTILDetail({ postId: tilId });
+  const { data, refetch } = useGetTILDetail({ postId: tilId });
 
   const formattedDate = new Date(updatedAt).toLocaleDateString("ko-KR", {
     year: "numeric",
@@ -40,6 +32,8 @@ const InfoBar = ({
     }
   };
 
+  useEffect(() => {}, [data?.liked]);
+
   const handleDeletePost = () => {
     deleteTIL({ tilId: tilId }).then((res) => {
       navigate("/");
@@ -47,12 +41,8 @@ const InfoBar = ({
   };
 
   const handlePatchPost = () => {
-    navigate(`/posts/${tilId}`);
+    navigate(`/posts/${tilId}/edit`);
   };
-
-  // useEffect(() => {
-  //   setIsLiked(liked);
-  // }, [isLiked]);
 
   return (
     <div>
@@ -66,21 +56,28 @@ const InfoBar = ({
         <div>
           {/* 로그인 여부에 따라 버튼 노출 달라짐 */}
           {isOwner ? (
-            <div className="flex">
-              <Button variant="outlined" onClick={handleDeletePost}>
-                삭제
-              </Button>
+            <div className="flex gap-2">
               <Button variant="outlined" onClick={handlePatchPost}>
                 수정
+              </Button>
+              <Button variant="outlined" onClick={handleDeletePost}>
+                삭제
               </Button>
             </div>
           ) : (
             <Button
               size="medium"
               variant="outlined"
-              color={data?.liked ? "#F20789" : "black"}
-              startIcon={<FavoriteIcon sx={{ color: "#F20789" }} />}
-              sx={{ borderRadius: "1rem" }}
+              startIcon={
+                <FavoriteIcon
+                  sx={{ color: data?.liked ? "#F20789" : "black" }}
+                />
+              }
+              sx={{
+                color: data?.liked ? "#F20789" : "black",
+                borderRadius: "1rem",
+                borderColor: data?.liked ? "#F20789" : "black",
+              }}
               disabled={!isLoggedIn}
               onClick={handleLike}
             >

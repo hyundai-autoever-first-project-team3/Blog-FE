@@ -1,10 +1,10 @@
 import React from "react";
 
-const ProfileSection = ({ nickName, intro }) => {
+const ProfileSection = ({ profile, nickName, intro }) => {
   return (
     <div className="flex flex-row items-center gap-3 px-3 py-5">
       <img
-        src="https://avatars.githubusercontent.com/u/89841486?v=4"
+        src={profile}
         alt="profile-image"
         className="w-[140px] h-[140px] rounded-full object-contain"
       />

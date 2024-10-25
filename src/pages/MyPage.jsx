@@ -43,8 +43,12 @@ const MyPage = () => {
   return (
     <>
       <Header />
-      <PageContainer>
-        <ProfileSection nickName={data?.nickName} intro={data?.intro} />
+      <PageContainer className="px-2 xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3 pt-3">
+        <ProfileSection
+          profile={data?.profileImage}
+          nickName={data?.nickname}
+          intro={data?.intro}
+        />
         <hr />
         <SubTabBar value={selectedTab} handleChange={handleChange} />
         {selectedTab === "write" && (
