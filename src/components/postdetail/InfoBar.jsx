@@ -6,17 +6,9 @@ import { deleteLike, deleteTIL, postLike } from "../../api/detail";
 import { useNavigate } from "react-router-dom";
 import { useGetTILDetail } from "../../hooks/useGetTILDetail";
 
-const InfoBar = ({
-  tilId,
-  isOwner,
-  updatedAt,
-  writerNickname,
-  // likeCount = 0,
-  // liked = false,
-}) => {
+const InfoBar = ({ tilId, isOwner, updatedAt, writerNickname }) => {
   const navigate = useNavigate();
   const { data, refetch } = useGetTILDetail({ postId: tilId });
-  console.log("data", data, data?.liked);
 
   const formattedDate = new Date(updatedAt).toLocaleDateString("ko-KR", {
     year: "numeric",
@@ -49,7 +41,7 @@ const InfoBar = ({
   };
 
   const handlePatchPost = () => {
-    navigate(`/posts/${tilId}`);
+    navigate(`/posts/${tilId}/edit`);
   };
 
   return (

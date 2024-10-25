@@ -27,9 +27,9 @@ export const getAlgorithms = async () => {
 };
 
 // TIL 글 수정 조회
-export const putTIL = async ({ tilId }) => {
+export const putTIL = async ({ tilId, tilData }) => {
   console.log(tilId);
-  return await client.put(`/api/tils/${tilId}`, {
+  return await client.put(`/api/tils/${tilId}`, tilData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -38,7 +38,6 @@ export const putTIL = async ({ tilId }) => {
 
 // TIL 글 삭제 조회
 export const deleteTIL = async ({ tilId }) => {
-  console.log(tilId);
   return await client.delete(`/api/tils/${tilId}`, {
     headers: {
       Authorization: `Bearer ${token}`,

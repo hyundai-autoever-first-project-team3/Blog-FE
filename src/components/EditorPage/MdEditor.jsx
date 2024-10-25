@@ -6,33 +6,40 @@ import MDEditor from "@uiw/react-md-editor/nohighlight";
 import "@uiw/react-md-editor/markdown-editor.css";
 import "@uiw/react-markdown-preview/markdown.css";
 import "../../styles/Editor.css";
-import { getAlgorithms, postTIL } from "../../api/detail";
-import { useNavigate } from "react-router-dom";
+import { getAlgorithms, postTIL, putTIL } from "../../api/detail";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ThumbnailModal from "./ThumbnailModal";
 import { postImageUpload } from "../../api/write";
-import { data } from "autoprefixer";
+import { useGetTILDetail } from "../../hooks/useGetTILDetail";
 
 function MdEditor() {
-
-  console.log(data);
+  const location = useLocation();
   const navigate = useNavigate();
+  const { postId } = useParams();
+  const isEdit = location.pathname.includes("/edit");
+  const { data } = useGetTILDetail({ postId: postId });
   const [postData, setPostData] = useState({
-    language: "",
-    site: "",
-    algorithmId: null,
-    title: "",
-    tag: "",
-    link: "",
-    codeContent: "",
-    content: "",
-    thumbnail: "",
+    language: isEdit ? data?.til.language : "",
+    site: isEdit ? data?.til.language : "",
+    algorithmId: isEdit ? data?.til.algorithmId : null,
+    title: isEdit ? data?.til.title : "",
+    link: isEdit ? data?.til.link : "",
+    codeContent: isEdit ? data?.til.codeContent : "",
+    content: isEdit ? data?.til.content : "",
+    thumbnail: isEdit ? data?.til.thumbnailImage : "",
   });
   const [algorithmOptions, setAlgorithmOptions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const algorithmNames = algorithmOptions.map((item) => item.korClassification);
 
   const handlePostData = (data) => {
-    postTIL(data).then((res) => navigate(`/posts/${res.data.id}`));
+    if (isEdit) {
+      putTIL({ tilId: postId, tilData: data }).then((res) =>
+        navigate(`/posts/${res.data.id}`)
+      );
+    } else {
+      postTIL(data).then((res) => navigate(`/posts/${res.data.id}`));
+    }
   };
 
   const handleDrop = async (event) => {
@@ -54,7 +61,7 @@ function MdEditor() {
       }
     }
   };
-  
+
   const handleModalSave = (thumbnail) => {
     postImageUpload({ img: thumbnail }).then((res) => {
       const addedPostData = {
@@ -67,8 +74,18 @@ function MdEditor() {
   };
 
   useEffect(() => {
+    setPostData({
+      language: isEdit ? data?.til.language : "",
+      site: isEdit ? data?.til.language : "",
+      algorithmId: isEdit ? data?.til.algorithmId : null,
+      title: isEdit ? data?.til.title : "",
+      link: isEdit ? data?.til.link : "",
+      codeContent: isEdit ? data?.til.codeContent : "",
+      content: isEdit ? data?.til.content : "",
+      thumbnail: isEdit ? data?.til.thumbnailImage : "",
+    });
     getAlgorithms().then((res) => setAlgorithmOptions(res.data.algorithmList));
-  }, []);
+  }, [isEdit, data]);
 
   return (
     <div
