@@ -23,13 +23,9 @@ const Routers = () => {
         {/* 챌린지 상세 페이지 - 일일 코딩테스트 문제 리스트 */}
         <Route element={<ChallengePage />} path="/challenges/:challengeId" />
         {/* 챌린지 문제토론 페이지 -  */}
-        {/* <Route
-          element={<DiscussionPage />}
-          path="/challenges/:challengeId/discussion/:discussionId"
-        /> */}
         <Route
           element={<DiscussionPage />}
-          path="/challenges/:challengeId/problems/:problemId"
+          path="/challenges/:challengeId/discussion/:discussionId"
         />
         {/* 마이페이지 */}
         <Route element={<MyPage />} path="/mypage" />

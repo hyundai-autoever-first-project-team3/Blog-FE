@@ -34,7 +34,6 @@ const PostComment = ({
           </div>
         </div>
         <div className="text-lg font-thin text-gray-8 py-6">{content}</div>
-        <hr className="my-4" />
       </div>
     </>
   );

@@ -29,6 +29,7 @@ const PostDetailPage = () => {
     });
   };
 
+  // postId가 변경될 때마다 데이터 갱신
   useEffect(() => {
     if (postId) {
       refetch();
