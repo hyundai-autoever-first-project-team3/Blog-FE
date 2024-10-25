@@ -15,6 +15,7 @@ const InfoBar = ({
   likeCount = 0,
 }) => {
   const navigate = useNavigate();
+  const { data } = useGetUserInfo(getCookie("accessToken"));
   const formattedDate = new Date(updatedAt).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",

@@ -9,10 +9,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { useMediaQuery } from '@mui/material';
 import { getCookie, removeCookie } from "../../api/cookie";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
-
 
 const Header = () => {
   const { isLoggedIn } = useAuth();
@@ -20,9 +18,7 @@ const Header = () => {
   const [modal, setModal] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const menuOpen = Boolean(anchorEl);
-  const isMobile = useMediaQuery('(max-width:550px)');
   const { data, refetch } = useGetUserInfo(getCookie("accessToken"));
-
 
   // 프로필 메뉴 클릭
   const handleMenuClick = (event) => {
@@ -61,7 +57,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex flex-row items-center justify-between p-3 shadow-sm">
+      <div className="flex flex-row justify-between items-center shadow-sm p-3">
         <div className="w-full max-w-[1400px] m-auto flex flex-row justify-between">
           <div
             className="text-2xl font-extrabold"
@@ -69,7 +65,7 @@ const Header = () => {
           >
             CodingCare
           </div>
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row gap-3 items-center">
             <IconButton aria-label="alarm">
               <FontAwesomeIcon icon={faBell} />
             </IconButton>
@@ -81,7 +77,7 @@ const Header = () => {
                 <img
                   src={data?.profileImage}
                   alt="profile"
-                  className="object-cover w-10 h-10 rounded-full"
+                  className="w-10 h-10 object-cover rounded-full"
                 />
                 <IconButton
                   onClick={handleMenuClick}
@@ -112,7 +108,7 @@ const Header = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width : isMobile ? '70%' : 400,
+            width: 400,
             bgcolor: "background.paper",
             boxShadow: 24,
             paddingY: 3,
@@ -129,16 +125,16 @@ const Header = () => {
           </IconButton>
           <div className="flex flex-col">
             <div className="text-xl font-semibold">로그인</div>
-            <div className="mb-5 text-lg">소셜 계정으로 로그인</div>
+            <div className="text-lg mb-5">소셜 계정으로 로그인</div>
             <div className="flex flex-col gap-3">
               <button
-                className="py-3 bg-yellow-400 rounded-md text-yellow-950"
+                className="bg-yellow-400 text-yellow-950 rounded-md py-3"
                 onClick={handleKakaoLogin}
               >
                 카카오 계정으로 로그인
               </button>
               <button
-                className="py-3 text-white bg-black rounded-md"
+                className="bg-black text-white rounded-md py-3"
                 onClick={handleGithubLogin}
               >
                 GitHub 계정으로 로그인

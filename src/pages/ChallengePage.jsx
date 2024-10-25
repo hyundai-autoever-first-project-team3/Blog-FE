@@ -21,10 +21,6 @@ const ChallengePage = () => {
       setChallengeDetail(res.data)
   })},[challengeId]);
 
-
-  
-
-
   return (
     <div>
       <PageContainer className="xl:px-[150px] lg:px-[100px] md:px-50 sm:px-10">
