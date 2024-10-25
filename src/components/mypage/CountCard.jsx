@@ -3,7 +3,7 @@ import React from "react";
 
 const CountCard = ({ title, count, icon }) => {
   return (
-    <div className="flex flex-row border min-h-32 rounded-md p-5 basis-2/6 flex-grow items-center">
+    <div className="flex flex-row border min-h-32 rounded-md p-5 basis-2/6 flex-grow items-center w-full">
       <div className="flex flex-row gap-3 items-start">
         <div className="p-2 bg-blue-100 rounded-md">
           <FontAwesomeIcon

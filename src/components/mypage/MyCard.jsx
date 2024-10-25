@@ -23,7 +23,7 @@ const MyCard = ({
       onClick={onClick}
     >
       <div className="text-xl font-semibold">{title}</div>
-      <div className="text-base text-gray-8 lg:min-h-[200px] line-clamp-2">
+      <div className="text-base text-gray-8 lg:min-h-[100px] line-clamp-2">
         {content}
       </div>
       <div className="flex flex-row gap-5">

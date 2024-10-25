@@ -43,7 +43,7 @@ const MyPage = () => {
   return (
     <>
       <Header />
-      <PageContainer className="px-2 xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3 pt-3">
+      <PageContainer className="px-2 xl:px-[100px] lg:px-[50px] md:px-5 sm:px-3 pt-3">
         <ProfileSection
           profile={data?.profileImage}
           nickName={data?.nickname}
@@ -83,7 +83,7 @@ const MyPage = () => {
         )}
         {selectedTab === "statistic" && (
           <div className="flex flex-col w-full gap-5 px-2">
-            <div className="flex flex-row items-center w-full gap-3">
+            <div className="flex flex-col w-full gap-3 items-center xl:flex-row  lg:flex-row md:flex-row sm:flex-col">
               <CountCard
                 title="전체 작성글 개수"
                 count={statistics?.tilsCount}
