@@ -2,8 +2,6 @@ import React from "react";
 import { Button } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useAuth } from "../../hooks/useAuth";
-import { useGetUserInfo } from "../../hooks/useGetUserInfo";
-import { getCookie } from "../../api/cookie";
 import { deleteTIL } from "../../api/detail";
 import { useNavigate } from "react-router-dom";
 

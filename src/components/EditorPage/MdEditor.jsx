@@ -9,6 +9,7 @@ import "../../styles/Editor.css";
 import { getAlgorithms, postTIL } from "../../api/detail";
 import { useNavigate } from "react-router-dom";
 import ThumbnailModal from "./ThumbnailModal";
+import { postImageUpload } from "../../api/write";
 
 function MdEditor() {
   const navigate = useNavigate();
@@ -27,8 +28,8 @@ function MdEditor() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const algorithmNames = algorithmOptions.map((item) => item.korClassification);
 
-  const handlePostData = () => {
-    postTIL(postData).then((res) => navigate(`/posts/${res.data.id}`));
+  const handlePostData = (data) => {
+    postTIL(data).then((res) => navigate(`/posts/${res.data.id}`));
   };
 
   const handleDrop = async (event) => {
@@ -45,9 +46,14 @@ function MdEditor() {
   };
 
   const handleModalSave = (thumbnail) => {
-    setPostData((prev) => ({ ...prev, thumbnail }));
-    setIsModalOpen(false);
-    handlePostData();
+    postImageUpload({ img: thumbnail }).then((res) => {
+      const addedPostData = {
+        ...postData,
+        thumbnailImage: res.data.uploadedUrl,
+      };
+      handlePostData(addedPostData);
+      setIsModalOpen(false);
+    });
   };
 
   useEffect(() => {

@@ -20,6 +20,11 @@ const Card = ({
     day: "numeric",
   });
 
+  const addDefaultThumbnail = (e) => {
+    e.currentTarget.src =
+      "https://velog.velcdn.com/images/k-svelte-master/post/43c86caf-fed8-4ab2-a98a-990b565efe0a/image.gif";
+  };
+
   return (
     <div
       id={id}
@@ -27,10 +32,13 @@ const Card = ({
       onClick={onClick}
     >
       <img
-        src="https://velog.velcdn.com/images/k-svelte-master/post/43c86caf-fed8-4ab2-a98a-990b565efe0a/image.gif
-"
+        src={
+          thumbnail ||
+          "https://velog.velcdn.com/images/k-svelte-master/post/43c86caf-fed8-4ab2-a98a-990b565efe0a/image.gif"
+        }
         alt="dummy"
         className="w-full object-cover max-h-60 mb-2"
+        onError={addDefaultThumbnail}
       />
       <div className="text-lg font-black truncate w-full px-1 mb-1">
         {title}

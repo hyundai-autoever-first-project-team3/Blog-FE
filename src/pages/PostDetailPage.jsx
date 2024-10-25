@@ -6,8 +6,6 @@ import Pagination from "@mui/material/Pagination";
 import Chip from "@mui/material/Chip";
 import Footer from "../components/postdetail/Footer";
 import { Tag } from "@mui/icons-material";
-import { setCookie } from "../api/cookie";
-import { getTILDetail } from "../api/main";
 import { useParams } from "react-router-dom";
 import PostComment from "../components/postdetail/PostComment";
 import MDEditor from "@uiw/react-md-editor/nohighlight";
@@ -84,7 +82,7 @@ const PostDetailPage = () => {
         </div>
         <div className="mt-10">
           <MDEditor.Markdown
-            source={postsDetail?.content}
+            source={postsDetail?.til.content}
             style={{ whiteSpace: "pre-wrap" }}
           />
         </div>

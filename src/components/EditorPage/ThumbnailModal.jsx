@@ -1,22 +1,20 @@
-import React from 'react';
-import { Modal, Box, IconButton, Button } from '@mui/material';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX } from '@fortawesome/free-solid-svg-icons';
-import { useMediaQuery } from '@mui/material';
+import React from "react";
+import { Modal, Box, IconButton, Button } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
+import { useMediaQuery } from "@mui/material";
 
 const ThumbnailModal = ({ isOpen, onClose, onSave }) => {
   const [thumbnail, setThumbnail] = React.useState(null);
-  const isMobile = useMediaQuery('(max-width:550px)');
+  const isMobile = useMediaQuery("(max-width:550px)");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (file) {
-      setThumbnail(URL.createObjectURL(file));
-    }
+    setThumbnail(file);
   };
 
   const handleCustomButtonClick = () => {
-    document.getElementById('file-input').click();
+    document.getElementById("file-input").click();
   };
 
   return (
@@ -55,8 +53,12 @@ const ThumbnailModal = ({ isOpen, onClose, onSave }) => {
               className="hidden"
             />
             {thumbnail && (
-              <img src={thumbnail} alt="Thumbnail Preview" className="my-3"
-              style={{ height: '200px', objectFit: 'cover' }} />
+              <img
+                src={URL.createObjectURL(thumbnail)}
+                alt="Thumbnail Preview"
+                className="my-3"
+                style={{ height: "200px", objectFit: "cover" }}
+              />
             )}
             <Button
               variant="contained"
