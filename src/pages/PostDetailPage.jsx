@@ -55,7 +55,7 @@ const PostDetailPage = () => {
           {postsDetail?.site && (
             <Chip
               icon={<Tag />}
-              label={postsDetail?.site}
+              label={postsDetail?.til.site}
               variant="outlined"
               color="success"
               className="m-1 my-2"
@@ -64,7 +64,7 @@ const PostDetailPage = () => {
           {postsDetail?.language && (
             <Chip
               icon={<Tag />}
-              label={postsDetail?.language}
+              label={postsDetail?.til.language}
               variant="outlined"
               color="success"
               className="m-1 my-2"
