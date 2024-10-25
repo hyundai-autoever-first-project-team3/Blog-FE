@@ -38,7 +38,7 @@ const PostDetailPage = () => {
   return (
     <>
       <Header />
-      <PageContainer className="px-3 xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3">
+      <PageContainer className="px-2 xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3 pt-3">
         <h1 className="mt-10 mb-8 text-5xl font-extrabold lg:mt-20">
           {postsDetail?.til.title}
         </h1>
@@ -92,9 +92,6 @@ const PostDetailPage = () => {
           intro={postsDetail?.memberWriterDto.intro}
           profileImage={postsDetail?.memberWriterDto.profileImage}
         />
-        <div className="flex items-center justify-center w-full my-10">
-          <Pagination count={10} color="success" />
-        </div>
         <div className="flex flex-col w-full gap-2">
           <div className="self-start text-2xl font-semibold">
             {postsDetail?.commentCounts || 0}개의 댓글
