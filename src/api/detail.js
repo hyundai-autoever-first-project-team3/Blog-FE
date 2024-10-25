@@ -5,11 +5,8 @@ const token = getCookie("accessToken");
 
 // TIL 글 상세 조회
 export const getTILDetail = async ({ tilId }) => {
-  return await client.get(`/api/tils/${tilId}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  console.log(tilId);
+  return await client.get(`/api/tils/${tilId}`);
 };
 
 // TIL 글 작성 조회

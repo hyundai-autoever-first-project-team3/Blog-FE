@@ -29,7 +29,6 @@ function MdEditor() {
     thumbnail: isEdit ? data?.til.thumbnailImage : "",
   });
   const [algorithmOptions, setAlgorithmOptions] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const algorithmNames = algorithmOptions.map((item) => item.korClassification);
 
   const handlePostData = (data) => {
@@ -135,7 +134,7 @@ function MdEditor() {
             placeholder: "내용을 입력하세요.",
           }}
         />
-        <EditerFooter handlePostData={() => setIsModalOpen(true)} />
+        <EditerFooter handlePostData={handlePostData} />
       </div>
       <div className="flex-col hidden w-1/2 h-full p-3 overflow-auto sm:flex bg-sky-50">
         <div className="preview-content">
@@ -145,11 +144,6 @@ function MdEditor() {
           />
         </div>
       </div>
-      <ThumbnailModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSave={handleModalSave}
-      />
     </div>
   );
 }

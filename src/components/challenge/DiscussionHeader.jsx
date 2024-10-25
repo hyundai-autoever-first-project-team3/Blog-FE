@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 
-export const DiscussionHeader = () => {
+export const DiscussionHeader = ({siteKinds, problemTitle}) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (event) => {
@@ -21,8 +21,8 @@ export const DiscussionHeader = () => {
       </Button>
 
       <div className="my-2">
-        <span className="text-lg mx-4 mr-10">백준</span>
-        <span className="text-2xl">아기상어</span>
+        <span className="text-lg mx-4 mr-10">{siteKinds}</span>
+        <span className="text-2xl">{problemTitle}</span>
       </div>
       <div>
         <div className="flex justify-center items-center">
