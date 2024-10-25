@@ -1,6 +1,7 @@
 import React from "react";
 
 const PostComment = ({
+  key,
   id,
   content,
   createdAt,
@@ -19,7 +20,7 @@ const PostComment = ({
     <>
       <div
         className="flex flex-col justify-items-start py-4 px-1 border border-b-gray-3 min-h-[140px] border-x-0 border-t-0"
-        key={id}
+        key={key}
         id={id}
       >
         <div className="flex flex-row items-center">
