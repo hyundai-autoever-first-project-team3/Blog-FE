@@ -15,18 +15,29 @@ export const getTIL = async ({ pageNumber }) => {
 
 // 챌린지 목록 조회
 export const getChallenges = async ({ pageSize }) => {
-  return await client.get(`/api/challenges?page=${pageSize}`);
+  return await client.get(`/api/challenges?page=${pageSize}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
 
 // TIL 글 상세 조회
 export const getTILDetail = async ({ tilId }) => {
-  console.log(tilId);
-  return await client.get(`/api/tils/${tilId}`);
+  return await client.get(`/api/tils/${tilId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
 
 // 챌린지 상세 문제 조회
 export const getChallengeDetail = async ({ challengeId }) => {
-  return await client.get(`/api/challenges/${challengeId}`);
+  return await client.get(`/api/challenges/${challengeId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
 
 // 유저 정보 조회

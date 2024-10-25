@@ -1,9 +1,7 @@
-import React from 'react'
-import Editor from '../components/EditorPage/MdEditor';
+import React from "react";
+import Editor from "../components/EditorPage/MdEditor";
 const PostWritePage = () => {
-  return (
-<Editor/>
-  );
-}
+  return <Editor />;
+};
 
-export default PostWritePage
+export default PostWritePage;

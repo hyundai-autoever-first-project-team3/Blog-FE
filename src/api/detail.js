@@ -74,13 +74,9 @@ export const postLike = async ({ tilId }) => {
 
 // 좋아요 삭제
 export const deleteLike = async ({ tilId }) => {
-  return await client.delete(
-    `/api/like`,
-    { tilId: tilId },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  return await client.delete(`/api/like/${tilId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
