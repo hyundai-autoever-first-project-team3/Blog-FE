@@ -9,7 +9,7 @@ const Footer = ({ nickname, profileImage, intro }) => {
           <img className="size-32 rounded-full" src={profileImage} alt="" />
           <div className="flex flex-col px-4">
             <div className="text-2xl font-bold">{nickname}</div>
-            <div className="text-lg">{intro}데이터가 없다</div>
+            <div className="text-lg">{intro}</div>
           </div>
         </div>
         <Button
