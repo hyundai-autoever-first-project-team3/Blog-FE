@@ -50,6 +50,7 @@ const PostDetailPage = () => {
           updatedAt={postsDetail?.til.updatedAt}
           likeCount={postsDetail?.likeCounts}
           writerNickname={postsDetail?.memberWriterDto.nickname}
+          liked={postsDetail?.liked}
         />
         <div className="tagwrap">
           {postsDetail?.site && (

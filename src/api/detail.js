@@ -60,19 +60,27 @@ export const postComment = async ({ tilId, content }) => {
 };
 
 // 좋아요 추가
-export const postLike = async () => {
-  return await client.post(`/api/like`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const postLike = async ({ tilId }) => {
+  return await client.post(
+    `/api/like`,
+    { tilId: tilId },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 };
 
 // 좋아요 삭제
-export const deleteLike = async () => {
-  return await client.delete(`/api/like`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const deleteLike = async ({ tilId }) => {
+  return await client.delete(
+    `/api/like`,
+    { tilId: tilId },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
 };
