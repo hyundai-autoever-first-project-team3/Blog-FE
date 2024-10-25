@@ -16,7 +16,7 @@ const MainPage = () => {
   const [postsData, setPostsData] = React.useState([]);
   const [challenges, setChallenges] = React.useState([]);
   const { content: posts, totalPages } = postsData;
-  const [pageNumber, setPageNumber] = React.useState(1);
+  const [pageNumber, setPageNumber] = React.useState(0);
   const handleChange = (event, pageNumber) => {
     setPageNumber(pageNumber);
   };
@@ -34,6 +34,7 @@ const MainPage = () => {
     getChallenges({ pageSize: 0 }).then((res) =>
       setChallenges(res.data.content)
     );
+    window.scrollTo(0, 0);
   }, [pageNumber]);
 
   return (
