@@ -37,7 +37,7 @@ const Card = ({
           "https://velog.velcdn.com/images/k-svelte-master/post/43c86caf-fed8-4ab2-a98a-990b565efe0a/image.gif"
         }
         alt="dummy"
-        className="w-full object-cover max-h-60 mb-2"
+        className="w-full object-cover min-h-60 max-h-60 mb-2"
         onError={addDefaultThumbnail}
       />
       <div className="text-lg font-black truncate w-full px-1 mb-1">

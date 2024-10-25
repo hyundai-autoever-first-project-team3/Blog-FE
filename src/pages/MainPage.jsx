@@ -15,7 +15,7 @@ const MainPage = () => {
   const [selectedTab, setSelectedTab] = useState("total");
   const [postsData, setPostsData] = React.useState([]);
   const [challenges, setChallenges] = React.useState([]);
-  const { content: posts, totalPages, pageable } = postsData;
+  const { content: posts, totalPages } = postsData;
   const [pageNumber, setPageNumber] = React.useState(1);
   const handleChange = (event, pageNumber) => {
     setPageNumber(pageNumber);
@@ -35,6 +35,7 @@ const MainPage = () => {
       setChallenges(res.data.content)
     );
   }, [pageNumber]);
+
   return (
     <>
       <Header />
