@@ -39,7 +39,7 @@ const PostDetailPage = () => {
     <>
       <Header />
       <PageContainer className="px-3 xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3">
-        <h1 className="text-5xl font-extrabold mb-8 mt-10 lg:mt-20">
+        <h1 className="mt-10 mb-8 text-5xl font-extrabold lg:mt-20">
           {postsDetail?.til.title}
         </h1>
         <InfoBar
@@ -96,7 +96,7 @@ const PostDetailPage = () => {
           <Pagination count={10} color="success" />
         </div>
         <div className="flex flex-col w-full gap-2">
-          <div className="text-2xl font-semibold self-start">
+          <div className="self-start text-2xl font-semibold">
             {postsDetail?.commentCounts || 0}개의 댓글
           </div>
           <TextField
