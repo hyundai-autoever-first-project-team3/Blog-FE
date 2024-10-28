@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import PageContainer from "./common/PageContainer";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { getCookie } from "../api/cookie";
+import { updateUserInfo } from "../api/user";
 
 const Setting = () => {
   const {data} = useGetUserInfo(getCookie('accessToken'));
@@ -21,7 +22,7 @@ const Setting = () => {
   useEffect(() => {
     if (data) {
       setProfileImage(data.profileImage);
-      setName(data.name);
+      setName(data.nickname);
       setEmail(data.email);
       setDescription(data.intro);
     }
@@ -43,8 +44,21 @@ const Setting = () => {
     setIsEditing(true);
   };
 
-  const handleSaveClick = () => {
-    setIsEditing(false);
+  const handleSaveClick = async () => {
+    try {
+      const token = getCookie('accessToken');
+      const userInfo = {
+        nickname: name,
+        intro: description,
+      };
+      const updatedData = await updateUserInfo(token, userInfo);
+      setIsEditing(false);
+      // 업데이트된 데이터를 상태에 반영
+      setName(updatedData.name);
+      setDescription(updatedData.intro);
+    } catch (error) {
+      console.error('Failed to save user info', error);
+    }
   };
 
   const handleEditTitleClick = () => {

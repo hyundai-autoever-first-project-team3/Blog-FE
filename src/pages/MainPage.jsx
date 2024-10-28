@@ -73,7 +73,7 @@ const MainPage = () => {
             ))}
           </div>
         )}
-        <div className="w-full flex flex-row items-center justify-center my-5">
+        <div className="flex flex-row items-center justify-center w-full my-5">
           <Pagination
             count={totalPages}
             page={pageNumber}
