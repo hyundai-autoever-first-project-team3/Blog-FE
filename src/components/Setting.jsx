@@ -54,7 +54,7 @@ const Setting = () => {
       const updatedData = await updateUserInfo(token, userInfo);
       setIsEditing(false);
       // 업데이트된 데이터를 상태에 반영
-      setName(updatedData.name);
+      setName(updatedData.nickname);
       setDescription(updatedData.intro);
     } catch (error) {
       console.error('Failed to save user info', error);
