@@ -13,3 +13,18 @@ export const updateUserInfo = async (token, userInfo) => {
     throw error;
   }
 };
+
+export const updateUserProfileImage = async (token, profileImageUrl) => {
+  try {
+    const response = await axios.patch('/api/member/profile', { profileImage: profileImageUrl }, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to update profile image', error);
+    throw error;
+  }
+};

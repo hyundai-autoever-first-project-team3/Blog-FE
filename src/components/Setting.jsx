@@ -4,7 +4,8 @@ import { useForm } from "react-hook-form";
 import PageContainer from "./common/PageContainer";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { getCookie } from "../api/cookie";
-import { updateUserInfo } from "../api/user";
+import { updateUserInfo, updateUserProfileImage } from "../api/user";
+import { postImageUpload } from "../api/write";
 
 const Setting = () => {
   const {data} = useGetUserInfo(getCookie('accessToken'));
@@ -28,11 +29,18 @@ const Setting = () => {
     }
   }, [data]);
 
-  const handleImageUpload = (e) => {
-    console.log(data);
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      setProfileImage(URL.createObjectURL(file));
+      try {
+        const formData = new FormData();
+        formData.append("profileImage", file);
+        const response = await postImageUpload(formData);
+        const imageUrl = response.data.uploadedUrl;
+        setProfileImage(imageUrl);
+      } catch (error) {
+        console.error("Image upload failed:", error);
+      }
     }
   };
   
@@ -52,10 +60,12 @@ const Setting = () => {
         intro: description,
       };
       const updatedData = await updateUserInfo(token, userInfo);
+      await updateUserProfileImage(token, profileImage);
       setIsEditing(false);
       // 업데이트된 데이터를 상태에 반영
       setName(updatedData.nickname);
       setDescription(updatedData.intro);
+      setProfileImage(updatedData.profileImage);
     } catch (error) {
       console.error('Failed to save user info', error);
     }
