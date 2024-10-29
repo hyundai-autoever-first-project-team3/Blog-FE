@@ -1,27 +1,28 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "../components/common/Header";
 import PageContainer from "../components/common/PageContainer";
 import ProblemCard from "../components/challenge/ProblemCard";
-import { getChallengeDetail } from "../api/main";
 import { useParams } from "react-router-dom";
+import { useGetProblems } from "../hooks/useGetProblems";
+import { Skeleton } from "@mui/material";
 
 const ChallengePage = () => {
-  const [challengeDetail, setChallengeDetail] = React.useState([]);
   const { challengeId } = useParams("challengeId");
+  const { data: challengeDetail, isLoading } = useGetProblems(challengeId);
   const formattedDate = new Date(
-    challengeDetail[0]?.createdAt
+    challengeDetail?.[0]?.createdAt
   ).toLocaleDateString("ko-KR", {
     year: "numeric",
     month: "long",
     day: "numeric",
   });
 
-  useEffect(() => {
-    getChallengeDetail({ challengeId: challengeId }).then((res) => {
-      // console.log(res.data)
-      setChallengeDetail(res.data);
-    });
-  }, [challengeId]);
+  // useEffect(() => {
+  //   getChallengeDetail({ challengeId: challengeId }).then((res) => {
+  //     // console.log(res.data)
+  //     setChallengeDetail(res.data);
+  //   });
+  // }, [challengeId]);
 
   return (
     <>
@@ -30,17 +31,39 @@ const ChallengePage = () => {
         <div className="flex text-5xl font-extrabold py-6 ">
           오늘의 챌린지 문제
         </div>
-        <div className="text-3xl mb-10">{formattedDate}</div>
+        {isLoading ? (
+          <Skeleton variant="text" className="min-h-[50px] w-[200px]" />
+        ) : (
+          <div className="text-3xl mb-10">{formattedDate}</div>
+        )}
         <div>
-          {challengeDetail?.map((problem) => (
-            <ProblemCard
-              problemId={problem.id}
-              title={problem.title}
-              site={problem.site}
-              siteKinds={problem.siteKinds}
-              level={problem.level}
-            />
-          ))}
+          {isLoading ? (
+            <div className="flex flex-col gap-4">
+              <Skeleton
+                variant="rectangular"
+                className="flex flex-row border min-h-32 rounded-md p-5 basis-2/6 flex-grow items-center w-full"
+              />
+              <Skeleton
+                variant="rectangular"
+                className="flex flex-row border min-h-32 rounded-md p-5 basis-2/6 flex-grow items-center w-full"
+              />
+              <Skeleton
+                variant="rectangular"
+                className="flex flex-row border min-h-32 rounded-md p-5 basis-2/6 flex-grow items-center w-full"
+              />
+            </div>
+          ) : (
+            challengeDetail?.map((problem) => (
+              <ProblemCard
+                problemId={problem.id}
+                title={problem.title}
+                site={problem.site}
+                siteKinds={problem.siteKinds}
+                level={problem.level}
+                isLoading={isLoading}
+              />
+            ))
+          )}
         </div>
       </PageContainer>
     </>
