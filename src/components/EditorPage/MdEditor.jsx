@@ -20,7 +20,7 @@ function MdEditor() {
   const { data } = useGetTILDetail({ postId: postId });
   const [postData, setPostData] = useState({
     language: isEdit ? data?.til.language : "",
-    site: isEdit ? data?.til.language : "",
+    site: isEdit ? data?.til.site : "",
     algorithmId: isEdit ? data?.til.algorithmId : null,
     title: isEdit ? data?.til.title : "",
     link: isEdit ? data?.til.link : "",
