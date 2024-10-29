@@ -17,13 +17,6 @@ const ChallengePage = () => {
     day: "numeric",
   });
 
-  // useEffect(() => {
-  //   getChallengeDetail({ challengeId: challengeId }).then((res) => {
-  //     // console.log(res.data)
-  //     setChallengeDetail(res.data);
-  //   });
-  // }, [challengeId]);
-
   return (
     <>
       <Header />
@@ -53,16 +46,19 @@ const ChallengePage = () => {
               />
             </div>
           ) : (
-            challengeDetail?.map((problem) => (
-              <ProblemCard
-                problemId={problem.id}
-                title={problem.title}
-                site={problem.site}
-                siteKinds={problem.siteKinds}
-                level={problem.level}
-                isLoading={isLoading}
-              />
-            ))
+            challengeDetail
+              ?.slice()
+              .reverse()
+              .map((problem) => (
+                <ProblemCard
+                  problemId={problem.id}
+                  title={problem.title}
+                  site={problem.site}
+                  siteKinds={problem.siteKinds}
+                  level={problem.level}
+                  isLoading={isLoading}
+                />
+              ))
           )}
         </div>
       </PageContainer>
