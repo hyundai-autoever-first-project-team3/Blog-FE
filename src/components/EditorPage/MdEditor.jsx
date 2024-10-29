@@ -62,6 +62,8 @@ function MdEditor() {
     }
   };
 
+  console.log(postData?.site);
+
   const handleModalSave = (thumbnail) => {
     postImageUpload({ img: thumbnail }).then((res) => {
       const addedPostData = {
@@ -99,7 +101,7 @@ function MdEditor() {
   useEffect(() => {
     setPostData({
       language: isEdit ? data?.til.language : "",
-      site: isEdit ? data?.til.language : "",
+      site: isEdit ? data?.til.site : "",
       algorithmId: isEdit ? data?.til.algorithmId : null,
       title: isEdit ? data?.til.title : "",
       link: isEdit ? data?.til.link : "",
