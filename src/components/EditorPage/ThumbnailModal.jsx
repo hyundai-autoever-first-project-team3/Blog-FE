@@ -11,7 +11,7 @@ const ThumbnailModal = ({
   thumbnailImage,
   isEdit,
 }) => {
-  const [thumbnail, setThumbnail] = React.useState(null);
+  const [thumbnail, setThumbnail] = React.useState(thumbnailImage);
   const isMobile = useMediaQuery("(max-width:550px)");
 
   const handleFileChange = (event) => {
@@ -21,6 +21,13 @@ const ThumbnailModal = ({
 
   const handleCustomButtonClick = () => {
     document.getElementById("file-input").click();
+  };
+
+  const getThumbnailSrc = () => {
+    // File 타입인지 확인하여 URL을 생성하거나 기존 URL을 사용
+    return thumbnail instanceof File
+      ? URL.createObjectURL(thumbnail)
+      : thumbnailImage;
   };
 
   return (
@@ -58,23 +65,13 @@ const ThumbnailModal = ({
               onChange={handleFileChange}
               className="hidden"
             />
-            {/* 수정 중이고 썸네일 null인 경우 기존 썸네일 출력 */}
-            {isEdit && !thumbnail ? (
+            {thumbnail && (
               <img
-                src={thumbnailImage}
+                src={getThumbnailSrc()}
                 alt="Thumbnail Preview"
                 className="my-3"
                 style={{ height: "200px", objectFit: "cover" }}
               />
-            ) : (
-              thumbnail && (
-                <img
-                  src={URL.createObjectURL(thumbnail)}
-                  alt="Thumbnail Preview"
-                  className="my-3"
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-              )
             )}
             <Button
               variant="contained"
