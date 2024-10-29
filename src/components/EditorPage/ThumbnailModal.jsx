@@ -4,7 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { useMediaQuery } from "@mui/material";
 
-const ThumbnailModal = ({ isOpen, onClose, onSave }) => {
+const ThumbnailModal = ({
+  isOpen,
+  onClose,
+  onSave,
+  thumbnailImage,
+  isEdit,
+}) => {
   const [thumbnail, setThumbnail] = React.useState(null);
   const isMobile = useMediaQuery("(max-width:550px)");
 
@@ -52,13 +58,23 @@ const ThumbnailModal = ({ isOpen, onClose, onSave }) => {
               onChange={handleFileChange}
               className="hidden"
             />
-            {thumbnail && (
+            {/* 수정 중이고 썸네일 null인 경우 기존 썸네일 출력 */}
+            {isEdit && !thumbnail ? (
               <img
-                src={URL.createObjectURL(thumbnail)}
+                src={thumbnailImage}
                 alt="Thumbnail Preview"
                 className="my-3"
                 style={{ height: "200px", objectFit: "cover" }}
               />
+            ) : (
+              thumbnail && (
+                <img
+                  src={URL.createObjectURL(thumbnail)}
+                  alt="Thumbnail Preview"
+                  className="my-3"
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+              )
             )}
             <Button
               variant="contained"

@@ -173,6 +173,8 @@ function MdEditor() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSave={handleModalSave}
+        thumbnailImage={postData?.thumbnail}
+        isEdit={isEdit}
       />
     </div>
   );
