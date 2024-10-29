@@ -73,6 +73,29 @@ function MdEditor() {
     });
   };
 
+  const handlePasteImage = async (event) => {
+    const clipboardItems = event.clipboardData.items;
+    for (let item of clipboardItems) {
+      if (item.type.includes("image")) {
+        const file = item.getAsFile();
+        if (file) {
+          try {
+            const formData = new FormData();
+            formData.append("img", file);
+            const response = await postImageUpload(formData);
+            const imageUrl = response.data.uploadedUrl;
+            setPostData((prev) => ({
+              ...prev,
+              content: `${prev.content}\n![image](${imageUrl})`,
+            }));
+          } catch (error) {
+            console.error("Image upload failed:", error);
+          }
+        }
+      }
+    }
+  };
+
   useEffect(() => {
     setPostData({
       language: isEdit ? data?.til.language : "",
@@ -134,6 +157,7 @@ function MdEditor() {
           textareaProps={{
             placeholder: "내용을 입력하세요.",
           }}
+          onPaste={handlePasteImage}
         />
         <EditerFooter handlePostData={() => setIsModalOpen(true)} />
       </div>
