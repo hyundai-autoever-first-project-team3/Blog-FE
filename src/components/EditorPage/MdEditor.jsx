@@ -141,7 +141,7 @@ function MdEditor() {
           />
           <Dropdown
             name="algorithm"
-            value={algorithmNames[postData.algorithmId - 1]}
+            value={postData?.algorithmId}
             options={algorithmNames}
             placeholder="알고리즘"
             onChange={(e) =>

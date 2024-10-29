@@ -6,7 +6,7 @@ const Dropdown = ({ name = null, value, options, placeholder, onChange }) => {
   return (
     <div className="relative w-full">
       <select
-        value={name === "algorithm" ? options[value] : value}
+        value={value}
         className="w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-1 focus:ring-orange-200"
         onChange={onChange}
       >
