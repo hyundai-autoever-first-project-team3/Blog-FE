@@ -7,10 +7,12 @@ import ChallengePage from "./pages/ChallengePage";
 import MyPage from "./pages/MyPage";
 import SettingPage from "./pages/SettingPage";
 import DiscussionPage from "./pages/DiscussionPage";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 const Routers = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         {/* 메인페이지 - 전체 글 목록 / 날짜별 챌린지 목록 */}
         <Route element={<MainPage />} path="/" exact />
