@@ -9,10 +9,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import { useMediaQuery } from '@mui/material';
+import { useMediaQuery } from "@mui/material";
 import { getCookie, removeCookie } from "../../api/cookie";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
-
 
 const Header = () => {
   const { isLoggedIn } = useAuth();
@@ -20,9 +19,8 @@ const Header = () => {
   const [modal, setModal] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const menuOpen = Boolean(anchorEl);
-  const isMobile = useMediaQuery('(max-width:550px)');
+  const isMobile = useMediaQuery("(max-width:550px)");
   const { data, refetch } = useGetUserInfo(getCookie("accessToken"));
-
 
   // 프로필 메뉴 클릭
   const handleMenuClick = (event) => {
@@ -64,7 +62,7 @@ const Header = () => {
       <div className="flex flex-row items-center justify-between p-3 shadow-sm">
         <div className="w-full max-w-[1400px] m-auto flex flex-row justify-between">
           <div
-            className="text-2xl font-extrabold"
+            className="text-2xl font-extrabold cursor-pointer"
             onClick={() => navigate("/")}
           >
             CodingCare
@@ -112,7 +110,7 @@ const Header = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width : isMobile ? '70%' : 400,
+            width: isMobile ? "70%" : 400,
             bgcolor: "background.paper",
             boxShadow: 24,
             paddingY: 3,
