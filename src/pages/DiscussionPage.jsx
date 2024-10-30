@@ -32,8 +32,8 @@ const DiscussionPage = () => {
   return (
     <>
       <Header />
-      <PageContainer className="xl:px-[150px] lg:px-[100px] md:px-50 sm:px-10 mt-5">
-        <div className="flex flex-row gap-3 mb-5">
+      <PageContainer className="px-2 pt-1 xl:px-[250px] lg:px-[100px] md:px-5 sm:px-3 sm:pt-3">
+        <div className="flex flex-col gap-3 mb-5 sm:flex-row">
           <Chip
             icon={<Tag />}
             label={data?.problemTitle}
