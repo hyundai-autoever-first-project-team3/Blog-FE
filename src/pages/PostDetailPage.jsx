@@ -109,6 +109,7 @@ const PostDetailPage = () => {
               alignSelf: "end",
             }}
             onClick={handlePostComment}
+            disabled={!newComment}
           >
             댓글 작성
           </Button>

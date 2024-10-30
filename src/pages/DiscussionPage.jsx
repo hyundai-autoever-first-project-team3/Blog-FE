@@ -79,6 +79,7 @@ const DiscussionPage = () => {
               alignSelf: "end",
             }}
             onClick={handlePostProblemComment}
+            disabled={!newComment}
           >
             댓글 작성
           </Button>
