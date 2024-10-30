@@ -32,6 +32,7 @@ const PostDetailPage = () => {
     if (postId) {
       refetch();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId]); // postsDetail 의존성 제거
 
   return (

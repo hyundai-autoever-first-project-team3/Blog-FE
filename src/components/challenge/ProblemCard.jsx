@@ -18,36 +18,30 @@ const ProblemCard = ({
 
   return (
     <div className="relative flex min-h-30 justify-between h-full py-5 px-3 my-5 border-2 p-2 rounded-lg shadow-sm">
-      <div className="flex flex-row justify-between w-5/6">
-        <div className="flex flex-col px-3">
+      <div className="flex flex-col justify-between w-5/6 gap-2 px-2 sm:flex-row sm:gap-0">
+        <div className="flex flex-col">
           <div className="text-xl font-semibold mb-2">{title}</div>
           <div className="text-lg">{siteKinds}</div>
           <div className="text- lg">{level}</div>
         </div>
 
-        <div className="flex flex-row items-center ">
-          <div className="flex flex-col mx-4 gap-2">
-            <Button
-              className="my-2"
-              variant="outlined"
-              color="success"
-              style={{ borderRadius: "1rem" }}
-              onClick={() => window.open(site)}
-            >
-              문제링크
-            </Button>
-            <Button
-              className="my-2"
-              variant="contained"
-              color="success"
-              style={{ borderRadius: "1rem" }}
-              onClick={() =>
-                navigate(`/challenges/${challengeId}/problems/${problemId}`)
-              }
-            >
-              토론방
-            </Button>
-          </div>
+        <div className="flex flex-col gap-2">
+          <Button
+            variant="outlined"
+            color="success"
+            onClick={() => window.open(site)}
+          >
+            문제링크
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() =>
+              navigate(`/challenges/${challengeId}/problems/${problemId}`)
+            }
+          >
+            토론방
+          </Button>
         </div>
       </div>
 
