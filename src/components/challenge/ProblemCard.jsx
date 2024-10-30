@@ -1,18 +1,11 @@
 import React from "react";
-import { Button, Skeleton } from "@mui/material";
+import { Button } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faMedal } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useParams } from "react-router-dom";
 
-const ProblemCard = ({
-  problemId,
-  title,
-  site,
-  siteKinds,
-  level,
-  isLoading,
-}) => {
+const ProblemCard = ({ problemId, title, site, siteKinds, level }) => {
   const { challengeId } = useParams();
   const navigate = useNavigate();
 

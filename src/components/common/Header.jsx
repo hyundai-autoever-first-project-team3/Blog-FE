@@ -7,14 +7,12 @@ import {
   faX,
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
-import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import { getCookie, removeCookie } from "../../api/cookie";
 import { useGetUserInfo } from "../../hooks/useGetUserInfo";
 
 const Header = () => {
-  const { isLoggedIn } = useAuth();
   const navigate = useNavigate();
   const [modal, setModal] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
