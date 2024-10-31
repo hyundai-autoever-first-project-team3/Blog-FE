@@ -10,7 +10,6 @@ import { postImageUpload } from "../api/write";
 const Setting = () => {
   const {data} = useGetUserInfo(getCookie('accessToken'));
   const [profileImage, setProfileImage] = useState("");
-  const { register, handleSubmit } = useForm();
   const [blogTitle, setBlogTitle] = useState("야호의 코딩케어");
   const [email, setEmail] = useState("example@gmail.com");
   const [isEditing, setIsEditing] = useState(false);
@@ -29,18 +28,10 @@ const Setting = () => {
     }
   }, [data]);
 
-  const handleImageUpload = async (e) => {
+  const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
-      try {
-        const formData = new FormData();
-        formData.append("profileImage", file);
-        const response = await postImageUpload(formData);
-        const imageUrl = response.data.uploadedUrl;
-        setProfileImage(imageUrl);
-      } catch (error) {
-        console.error("Image upload failed:", error);
-      }
+      setProfileImage(URL.createObjectURL(file));
     }
   };
   
@@ -52,6 +43,28 @@ const Setting = () => {
     setIsEditing(true);
   };
 
+  const handleSaveImage = async () => {
+    try {
+      const token = getCookie('accessToken');
+      const formData = new FormData();
+      formData.append('file', profileImage);
+
+      // 이미지 업로드 API 호출
+      const response = await postImageUpload(formData);
+      const imageUrl = response.data.imageUrl;
+
+      // 프로필 이미지 업데이트 API 호출
+      await updateUserProfileImage(token, imageUrl);
+
+      // 프로필 이미지 상태 업데이트
+      setProfileImage(imageUrl);
+
+      alert('프로필 이미지가 저장되었습니다.');
+    } catch (error) {
+      console.error('프로필 이미지 저장 실패', error);
+    }
+  };
+  
   const handleSaveClick = async () => {
     try {
       const token = getCookie('accessToken');
@@ -60,12 +73,10 @@ const Setting = () => {
         intro: description,
       };
       const updatedData = await updateUserInfo(token, userInfo);
-      await updateUserProfileImage(token, profileImage);
       setIsEditing(false);
       // 업데이트된 데이터를 상태에 반영
       setName(updatedData.nickname);
       setDescription(updatedData.intro);
-      setProfileImage(updatedData.profileImage);
     } catch (error) {
       console.error('Failed to save user info', error);
     }
@@ -95,9 +106,13 @@ const Setting = () => {
       <div className="flex flex-row mb-10">
         {/* 프로필 이미지 */}
         <div className="flex flex-col items-center pr-4 border-r-2 min-w-[160px]">
-          <Avatar
+        <Avatar
             alt="Profile Image"
-            src={profileImage}
+            src={
+              profileImage instanceof File
+                ? URL.createObjectURL(profileImage)
+                : profileImage
+            }
             sx={{ width: 100, height: 100 }}
             className="mb-4"
           />
@@ -109,8 +124,8 @@ const Setting = () => {
           >
             이미지 업로드
           </Button>
-          <Button variant="text" color="info" onClick={handleButtonClick}>
-            이미지 제거
+          <Button variant="text" color="info" onClick={handleSaveImage}>
+            이미지 저장
           </Button>
 
           <input
