@@ -1,10 +1,6 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import React from "react";
-import {
-  faArrowTrendUp,
-  faFlagCheckered,
-  faUsers,
-} from "@fortawesome/free-solid-svg-icons";
+import { faBookOpen, faFlagCheckered } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TabBar = ({ value, handleChange }) => {
@@ -24,7 +20,7 @@ const TabBar = ({ value, handleChange }) => {
           <Tab
             value="total"
             label="전체 글"
-            icon={<FontAwesomeIcon icon={faArrowTrendUp} />}
+            icon={<FontAwesomeIcon icon={faBookOpen} />}
             iconPosition="start"
             sx={{
               padding: "0px 8px",

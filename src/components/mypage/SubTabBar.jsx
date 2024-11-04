@@ -1,9 +1,9 @@
 import { Tab, Tabs } from "@mui/material";
 import React from "react";
 import {
-  faArrowTrendUp,
-  faFlagCheckered,
-  faUsers,
+  faChartSimple,
+  faHeart,
+  faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -16,14 +16,14 @@ const SubTabBar = ({ value, handleChange }) => {
         aria-label="wrapped label tabs example"
         TabIndicatorProps={{
           style: {
-            backgroundColor: "black", // 밑줄(인디케이터) 색상을 변경
+            backgroundColor: "black",
           },
         }}
       >
         <Tab
           value="write"
           label="작성 글"
-          icon={<FontAwesomeIcon icon={faArrowTrendUp} />}
+          icon={<FontAwesomeIcon icon={faPenToSquare} />}
           iconPosition="start"
           sx={{
             padding: "0px 8px",
@@ -39,7 +39,7 @@ const SubTabBar = ({ value, handleChange }) => {
         <Tab
           value="like"
           label="좋아요 글"
-          icon={<FontAwesomeIcon icon={faFlagCheckered} />}
+          icon={<FontAwesomeIcon icon={faHeart} />}
           iconPosition="start"
           sx={{
             padding: "0px 8px",
@@ -55,7 +55,7 @@ const SubTabBar = ({ value, handleChange }) => {
         <Tab
           value="statistic"
           label="통계"
-          icon={<FontAwesomeIcon icon={faUsers} />}
+          icon={<FontAwesomeIcon icon={faChartSimple} />}
           iconPosition="start"
           sx={{
             padding: "0px 8px",

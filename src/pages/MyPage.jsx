@@ -9,6 +9,7 @@ import {
   faCalendar,
   faHeart,
   faPenToSquare,
+  faRobot,
   faThumbsDown,
   faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
@@ -120,7 +121,7 @@ const MyPage = () => {
                 <div className="flex flex-row items-start gap-3">
                   <div className="p-2 bg-blue-100 rounded-md">
                     <FontAwesomeIcon
-                      icon={faPenToSquare}
+                      icon={faRobot}
                       className="w-5 h-5 text-blue-950"
                     />
                   </div>
