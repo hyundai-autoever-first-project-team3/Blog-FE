@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 import PageContainer from "./common/PageContainer";
 import { useGetUserInfo } from "../hooks/useGetUserInfo";
 import { getCookie } from "../api/cookie";
-import { updateUserInfo } from "../api/user";
+import { updateMemberProfile, uploadProfileImage } from "../api/member";
 
 const Setting = () => {
-  const {data} = useGetUserInfo(getCookie('accessToken'));
+  const {data, refetch} = useGetUserInfo(getCookie('accessToken'));
   const [profileImage, setProfileImage] = useState("");
   const { register, handleSubmit } = useForm();
   const [blogTitle, setBlogTitle] = useState("야호의 코딩케어");
@@ -22,17 +22,32 @@ const Setting = () => {
   useEffect(() => {
     if (data) {
       setProfileImage(data.profileImage);
-      setName(data.nickname);
+      setName(data.name);
       setEmail(data.email);
       setDescription(data.intro);
     }
   }, [data]);
-
-  const handleImageUpload = (e) => {
-    console.log(data);
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      setProfileImage(URL.createObjectURL(file));
+      const formData = new FormData();
+      formData.append("img", file);
+      
+      try {
+        const uploadResponse = await uploadProfileImage(formData);
+        const imageUrl = uploadResponse.data.uploadedUrl;
+        
+        // 프로필 정보 업데이트
+        await updateMemberProfile({
+          profileImage: imageUrl
+        });
+  
+        setProfileImage(imageUrl);
+        refetch(); // 사용자 정보 다시 불러오기
+        
+      } catch (error) {
+        console.error("프로필 이미지 업데이트 실패:", error);
+      }
     }
   };
   
@@ -46,18 +61,14 @@ const Setting = () => {
 
   const handleSaveClick = async () => {
     try {
-      const token = getCookie('accessToken');
-      const userInfo = {
+      await updateMemberProfile({
         nickname: name,
-        intro: description,
-      };
-      const updatedData = await updateUserInfo(token, userInfo);
+        intro: description
+      });
       setIsEditing(false);
-      // 업데이트된 데이터를 상태에 반영
-      setName(updatedData.nickname);
-      setDescription(updatedData.intro);
+      refetch(); // 변경된 정보 다시 불러오기
     } catch (error) {
-      console.error('Failed to save user info', error);
+      console.error("프로필 업데이트 실패:", error);
     }
   };
 
