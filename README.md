@@ -1,6 +1,6 @@
 # 블로그 개발 프로젝트 (Coding Care)
 
-담당 파트: FE개발, UI/UX Design, 기획, 웹개발
+담당 파트: FE개발, UI/UX Design, 기획, 웹개발 \n
 서비스: 웹
 작업기간: October 18, 2024 → October 25, 2024
 개발 인원(역할): 5명 (프론트엔드 :3명 백엔드 :2명)
