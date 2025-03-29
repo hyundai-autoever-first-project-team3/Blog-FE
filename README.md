@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# 블로그 개발 프로젝트 (Coding Care)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+담당 파트: FE개발, UI/UX Design, 기획, 웹개발
+서비스: 웹
+작업기간: October 18, 2024 → October 25, 2024
+개발 인원(역할): 5명 (프론트엔드 :3명 백엔드 :2명)
+프로젝트 구분: 현대오토에버 모빌리티 SW스쿨 1기 웹/앱
 
-## Available Scripts
+![슬라이드1.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C1.png)
 
-In the project directory, you can run:
+![슬라이드2.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C2.png)
 
-### `npm start`
+![슬라이드3.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C3.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![슬라이드4.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C4.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![슬라이드5.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C5.png)
 
-### `npm test`
+![슬라이드6.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C6.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![슬라이드7.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C7.png)
 
-### `npm run build`
+![슬라이드8.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C8.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![슬라이드9.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C9.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![슬라이드10.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C10.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![슬라이드11.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C11.png)
 
-### `npm run eject`
+![슬라이드12.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C12.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![슬라이드13.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C13.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![슬라이드14.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C14.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![슬라이드15.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C15.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![슬라이드16.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C16.png)
 
-## Learn More
+![슬라이드17.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C17.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![슬라이드18.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C18.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![슬라이드19.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C19.png)
 
-### Code Splitting
+![슬라이드20.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C20.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![슬라이드21.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C21.png)
 
-### Analyzing the Bundle Size
+![슬라이드22.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C22.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![슬라이드23.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C23.png)
 
-### Making a Progressive Web App
+![슬라이드25.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C25.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![슬라이드26.PNG](%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C26.png)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[https://github.com/hyundai-autoever-first-project-team3/Blog-FE](https://github.com/hyundai-autoever-first-project-team3/Blog-FE)
